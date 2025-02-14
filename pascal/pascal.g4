@@ -482,7 +482,7 @@ repeatStatement
     ;
 
 forStatement
-    : FOR identifier ASSIGN expression (TO | DOWNTO) expression DO statement
+    : FOR identifier ASSIGN forList DO statement
     ;
 
 forList
