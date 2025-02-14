@@ -1,0 +1,26 @@
+# macOS system files
+.DS_Store
+
+# ANTLR generated files
+*.class
+*.pyc
+
+
+# Python virtual environment (if using ANTLR with Python)
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code settings (if using VS Code)
+.vscode/
+
+# JetBrains IDE settings (if using IntelliJ, PyCharm, etc.)
+.idea/
+*.iml
+
+# Node.js dependencies (if using ANTLR with JavaScript)
+node_modules/
+npm-debug.log
+yarn-error.log
