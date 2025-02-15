@@ -13,7 +13,7 @@
 ### Get ANTLR JAR dependency (Version 4.13.2) — in case Java environment can't find ANTLR4 in the system
 ``curl -O https://www.antlr.org/download/antlr-4.13.2-complete.jar`` 
 ### Generate Java files (i.e., generate PARSER and LEXER from the grammar using ANTLR4)
-``antlr -Dlanguage=Java -visitor -no-listener pascal.g4``
+``antlr -Dlanguage=Java -visitor pascal.g4``
 ### Running code: 
 ### Option 1: 
 ### Compile Java with a JAR dependency 

@@ -6,16 +6,6 @@ public class pascalCustomVisitor extends pascalBaseVisitor<Void> {
     private final Map<String, Integer> intVariables = new HashMap<>();
 
     @Override
-    public Void visitProgram(pascalParser.ProgramContext ctx) {
-        return visitChildren(ctx);
-    }
-
-    @Override
-    public Void visitCompoundStatement(pascalParser.CompoundStatementContext ctx) {
-        return visitChildren(ctx);
-    }
-
-    @Override
     public Void visitVariableDeclaration(pascalParser.VariableDeclarationContext ctx) {
         // Iterate over all declared variables
         for (pascalParser.IdentifierContext identifierCtx : ctx.identifierList().identifier()) {
@@ -25,6 +15,7 @@ public class pascalCustomVisitor extends pascalBaseVisitor<Void> {
 
             if (varType.equals("integer")) {
                 intVariables.put(varName, 0);
+                
             } else if (varType.equals("string")) {
                 stringVariables.put(varName, "");
             }

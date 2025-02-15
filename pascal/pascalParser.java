@@ -183,6 +183,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_program; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterProgram(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitProgram(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitProgram(this);
 			else return visitor.visitChildren(this);
@@ -244,6 +252,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_programHeading; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterProgramHeading(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitProgramHeading(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitProgramHeading(this);
@@ -317,6 +333,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_identifier; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterIdentifier(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitIdentifier(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitIdentifier(this);
@@ -394,6 +418,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_block; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterBlock(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitBlock(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitBlock(this);
@@ -494,6 +526,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_usesUnitsPart; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterUsesUnitsPart(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitUsesUnitsPart(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitUsesUnitsPart(this);
 			else return visitor.visitChildren(this);
@@ -543,6 +583,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_labelDeclarationPart; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterLabelDeclarationPart(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitLabelDeclarationPart(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitLabelDeclarationPart(this);
@@ -602,6 +650,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_label; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterLabel(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitLabel(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitLabel(this);
 			else return visitor.visitChildren(this);
@@ -646,6 +702,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_constantDefinitionPart; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterConstantDefinitionPart(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitConstantDefinitionPart(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitConstantDefinitionPart(this);
@@ -705,6 +769,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_constantDefinition; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterConstantDefinition(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitConstantDefinition(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitConstantDefinition(this);
 			else return visitor.visitChildren(this);
@@ -748,6 +820,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_constantChr; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterConstantChr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitConstantChr(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitConstantChr(this);
@@ -803,6 +883,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_constant; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterConstant(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitConstant(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitConstant(this);
@@ -889,6 +977,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_unsignedNumber; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterUnsignedNumber(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitUnsignedNumber(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitUnsignedNumber(this);
 			else return visitor.visitChildren(this);
@@ -939,6 +1035,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_unsignedInteger; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterUnsignedInteger(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitUnsignedInteger(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitUnsignedInteger(this);
 			else return visitor.visitChildren(this);
@@ -973,6 +1077,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_unsignedReal; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterUnsignedReal(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitUnsignedReal(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitUnsignedReal(this);
@@ -1009,6 +1121,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_sign; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterSign(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitSign(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitSign(this);
@@ -1055,6 +1175,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_bool_; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterBool_(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitBool_(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitBool_(this);
 			else return visitor.visitChildren(this);
@@ -1098,6 +1226,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_string; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterString(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitString(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitString(this);
@@ -1143,6 +1279,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeDefinitionPart; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterTypeDefinitionPart(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitTypeDefinitionPart(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitTypeDefinitionPart(this);
@@ -1207,6 +1351,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeDefinition; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterTypeDefinition(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitTypeDefinition(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitTypeDefinition(this);
@@ -1294,6 +1446,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_functionType; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterFunctionType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitFunctionType(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitFunctionType(this);
 			else return visitor.visitChildren(this);
@@ -1346,6 +1506,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_procedureType; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterProcedureType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitProcedureType(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitProcedureType(this);
@@ -1400,6 +1568,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_type_; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterType_(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitType_(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitType_(this);
@@ -1485,6 +1661,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_simpleType; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterSimpleType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitSimpleType(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitSimpleType(this);
 			else return visitor.visitChildren(this);
@@ -1551,6 +1735,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_scalarType; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterScalarType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitScalarType(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitScalarType(this);
 			else return visitor.visitChildren(this);
@@ -1595,6 +1787,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_subrangeType; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterSubrangeType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitSubrangeType(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitSubrangeType(this);
@@ -1641,6 +1841,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_typeIdentifier; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterTypeIdentifier(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitTypeIdentifier(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitTypeIdentifier(this);
@@ -1708,6 +1916,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_structuredType; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterStructuredType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitStructuredType(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitStructuredType(this);
 			else return visitor.visitChildren(this);
@@ -1773,6 +1989,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_unpackedStructuredType; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterUnpackedStructuredType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitUnpackedStructuredType(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitUnpackedStructuredType(this);
@@ -1846,6 +2070,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_stringtype; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterStringtype(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitStringtype(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitStringtype(this);
 			else return visitor.visitChildren(this);
@@ -1914,6 +2146,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_arrayType; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterArrayType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitArrayType(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitArrayType(this);
@@ -1992,6 +2232,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_typeList; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterTypeList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitTypeList(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitTypeList(this);
 			else return visitor.visitChildren(this);
@@ -2046,6 +2294,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_indexType; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterIndexType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitIndexType(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitIndexType(this);
 			else return visitor.visitChildren(this);
@@ -2082,6 +2338,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_componentType; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterComponentType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitComponentType(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitComponentType(this);
@@ -2121,6 +2385,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_recordType; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterRecordType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitRecordType(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitRecordType(this);
@@ -2175,6 +2447,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_fieldList; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterFieldList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitFieldList(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitFieldList(this);
@@ -2248,6 +2528,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_fixedPart; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterFixedPart(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitFixedPart(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitFixedPart(this);
 			else return visitor.visitChildren(this);
@@ -2308,6 +2596,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_recordSection; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterRecordSection(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitRecordSection(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitRecordSection(this);
 			else return visitor.visitChildren(this);
@@ -2360,6 +2656,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_variantPart; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterVariantPart(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitVariantPart(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitVariantPart(this);
@@ -2425,6 +2729,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_tag; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterTag(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitTag(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitTag(this);
 			else return visitor.visitChildren(this);
@@ -2485,6 +2797,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_variant; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterVariant(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitVariant(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitVariant(this);
 			else return visitor.visitChildren(this);
@@ -2532,6 +2852,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_setType; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterSetType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitSetType(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitSetType(this);
 			else return visitor.visitChildren(this);
@@ -2573,6 +2901,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_baseType; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterBaseType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitBaseType(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitBaseType(this);
 			else return visitor.visitChildren(this);
@@ -2611,6 +2947,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_fileType; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterFileType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitFileType(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitFileType(this);
@@ -2667,6 +3011,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_pointerType; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterPointerType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitPointerType(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitPointerType(this);
 			else return visitor.visitChildren(this);
@@ -2713,6 +3065,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_variableDeclarationPart; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterVariableDeclarationPart(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitVariableDeclarationPart(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitVariableDeclarationPart(this);
@@ -2778,6 +3138,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_variableDeclaration; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterVariableDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitVariableDeclaration(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitVariableDeclaration(this);
 			else return visitor.visitChildren(this);
@@ -2820,6 +3188,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_procedureAndFunctionDeclarationPart; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterProcedureAndFunctionDeclarationPart(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitProcedureAndFunctionDeclarationPart(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitProcedureAndFunctionDeclarationPart(this);
 			else return visitor.visitChildren(this);
@@ -2861,6 +3237,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_procedureOrFunctionDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterProcedureOrFunctionDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitProcedureOrFunctionDeclaration(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitProcedureOrFunctionDeclaration(this);
@@ -2921,6 +3305,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_procedureDeclaration; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterProcedureDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitProcedureDeclaration(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitProcedureDeclaration(this);
@@ -2985,6 +3377,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_formalParameterList; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterFormalParameterList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitFormalParameterList(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitFormalParameterList(this);
 			else return visitor.visitChildren(this);
@@ -3045,6 +3445,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_formalParameterSection; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterFormalParameterSection(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitFormalParameterSection(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitFormalParameterSection(this);
@@ -3122,6 +3530,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_parameterGroup; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterParameterGroup(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitParameterGroup(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitParameterGroup(this);
 			else return visitor.visitChildren(this);
@@ -3169,6 +3585,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_identifierList; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterIdentifierList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitIdentifierList(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitIdentifierList(this);
@@ -3230,6 +3654,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_constList; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterConstList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitConstList(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitConstList(this);
@@ -3297,6 +3729,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_functionDeclaration; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterFunctionDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitFunctionDeclaration(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitFunctionDeclaration(this);
 			else return visitor.visitChildren(this);
@@ -3355,6 +3795,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_resultType; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterResultType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitResultType(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitResultType(this);
 			else return visitor.visitChildren(this);
@@ -3395,6 +3843,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_statement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitStatement(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitStatement(this);
@@ -3467,6 +3923,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_unlabelledStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterUnlabelledStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitUnlabelledStatement(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitUnlabelledStatement(this);
@@ -3541,6 +4005,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_simpleStatement; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterSimpleStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitSimpleStatement(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitSimpleStatement(this);
 			else return visitor.visitChildren(this);
@@ -3608,6 +4080,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_assignmentStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterAssignmentStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitAssignmentStatement(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitAssignmentStatement(this);
@@ -3687,6 +4167,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_variable; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterVariable(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitVariable(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitVariable(this);
@@ -3832,6 +4320,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_expression; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitExpression(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitExpression(this);
 			else return visitor.visitChildren(this);
@@ -3886,6 +4382,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_relationaloperator; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterRelationaloperator(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitRelationaloperator(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitRelationaloperator(this);
 			else return visitor.visitChildren(this);
@@ -3938,6 +4442,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_simpleExpression; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterSimpleExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitSimpleExpression(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitSimpleExpression(this);
 			else return visitor.visitChildren(this);
@@ -3987,6 +4499,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_additiveoperator; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterAdditiveoperator(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitAdditiveoperator(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitAdditiveoperator(this);
@@ -4040,6 +4560,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_term; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterTerm(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitTerm(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitTerm(this);
 			else return visitor.visitChildren(this);
@@ -4092,6 +4620,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_multiplicativeoperator; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterMultiplicativeoperator(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitMultiplicativeoperator(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitMultiplicativeoperator(this);
 			else return visitor.visitChildren(this);
@@ -4139,6 +4675,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_signedFactor; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterSignedFactor(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitSignedFactor(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitSignedFactor(this);
@@ -4216,6 +4760,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_factor; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterFactor(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitFactor(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitFactor(this);
@@ -4315,6 +4867,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_unsignedConstant; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterUnsignedConstant(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitUnsignedConstant(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitUnsignedConstant(this);
 			else return visitor.visitChildren(this);
@@ -4387,6 +4947,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_functionDesignator; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterFunctionDesignator(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitFunctionDesignator(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitFunctionDesignator(this);
 			else return visitor.visitChildren(this);
@@ -4436,6 +5004,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_parameterList; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterParameterList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitParameterList(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitParameterList(this);
@@ -4494,6 +5070,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_set_; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterSet_(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitSet_(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitSet_(this);
@@ -4561,6 +5145,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_elementList; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterElementList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitElementList(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitElementList(this);
@@ -4648,6 +5240,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_element; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterElement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitElement(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitElement(this);
 			else return visitor.visitChildren(this);
@@ -4702,6 +5302,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_procedureStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterProcedureStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitProcedureStatement(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitProcedureStatement(this);
@@ -4761,6 +5369,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_actualParameter; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterActualParameter(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitActualParameter(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitActualParameter(this);
 			else return visitor.visitChildren(this);
@@ -4814,6 +5430,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_parameterwidth; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterParameterwidth(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitParameterwidth(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitParameterwidth(this);
 			else return visitor.visitChildren(this);
@@ -4854,6 +5478,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_gotoStatement; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterGotoStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitGotoStatement(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitGotoStatement(this);
 			else return visitor.visitChildren(this);
@@ -4890,6 +5522,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_emptyStatement_; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterEmptyStatement_(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitEmptyStatement_(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitEmptyStatement_(this);
 			else return visitor.visitChildren(this);
@@ -4921,6 +5561,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_empty_; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterEmpty_(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitEmpty_(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitEmpty_(this);
@@ -4965,6 +5613,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_structuredStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterStructuredStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitStructuredStatement(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitStructuredStatement(this);
@@ -5037,6 +5693,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_compoundStatement; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterCompoundStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitCompoundStatement(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitCompoundStatement(this);
 			else return visitor.visitChildren(this);
@@ -5084,6 +5748,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_statements; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterStatements(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitStatements(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitStatements(this);
@@ -5141,6 +5813,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_conditionalStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterConditionalStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitConditionalStatement(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitConditionalStatement(this);
@@ -5202,6 +5882,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_ifStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterIfStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitIfStatement(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitIfStatement(this);
@@ -5274,6 +5962,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_caseStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterCaseStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitCaseStatement(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitCaseStatement(this);
@@ -5358,6 +6054,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_caseListElement; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterCaseListElement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitCaseListElement(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitCaseListElement(this);
 			else return visitor.visitChildren(this);
@@ -5404,6 +6108,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_repetetiveStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterRepetetiveStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitRepetetiveStatement(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitRepetetiveStatement(this);
@@ -5469,6 +6181,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_whileStatement; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterWhileStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitWhileStatement(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitWhileStatement(this);
 			else return visitor.visitChildren(this);
@@ -5516,6 +6236,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_repeatStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterRepeatStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitRepeatStatement(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitRepeatStatement(this);
@@ -5569,6 +6297,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_forStatement; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterForStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitForStatement(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitForStatement(this);
 			else return visitor.visitChildren(this);
@@ -5621,6 +6357,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_forList; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterForList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitForList(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitForList(this);
 			else return visitor.visitChildren(this);
@@ -5671,6 +6415,14 @@ public class pascalParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_initialValue; }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterInitialValue(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitInitialValue(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitInitialValue(this);
 			else return visitor.visitChildren(this);
@@ -5707,6 +6459,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_finalValue; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterFinalValue(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitFinalValue(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitFinalValue(this);
@@ -5749,6 +6509,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_withStatement; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterWithStatement(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitWithStatement(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitWithStatement(this);
@@ -5799,6 +6567,14 @@ public class pascalParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_recordVariableList; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).enterRecordVariableList(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof pascalListener ) ((pascalListener)listener).exitRecordVariableList(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof pascalVisitor ) return ((pascalVisitor<? extends T>)visitor).visitRecordVariableList(this);
