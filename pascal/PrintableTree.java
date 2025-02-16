@@ -1,4 +1,8 @@
 import org.antlr.v4.runtime.tree.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class PrintableTree {
     private final ParseTree tree;
@@ -43,5 +47,24 @@ public class PrintableTree {
             return id + "'" + node.getText() + "'";
         }
         return "'" + node.getText() + "'";
+    }
+
+    public void saveToFile(String path, String name) {
+        String output = toString();
+        Path dirPath = Paths.get(path);
+        Path filePath = dirPath.resolve(name);
+
+        try {
+            // Ensure the directory exists
+            if (!Files.exists(dirPath)) {
+                Files.createDirectories(dirPath);
+            }
+
+            // Write to the file
+            Files.write(filePath, output.getBytes());
+            System.out.println("AST tree saved to " + filePath.toAbsolutePath());
+        } catch (IOException e) {
+            System.err.println("Error writing AST tree to file: " + e.getMessage());
+        }
     }
 }
