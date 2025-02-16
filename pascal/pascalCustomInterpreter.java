@@ -22,6 +22,9 @@ public class pascalCustomInterpreter {
             // Parse the input
             ParseTree tree = parser.program(); // Start parsing from 'program' rule
 
+            PrintableTree printableTree = new PrintableTree(tree);
+            System.out.println(printableTree);
+
             // Walk and interpret the AST
             pascalCustomVisitor interpreter = new pascalCustomVisitor();
             interpreter.visit(tree);
