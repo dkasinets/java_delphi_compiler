@@ -14,26 +14,12 @@ program
 │   │   ├── W'var'
 │   │   ├── variableDeclaration
 │   │   │   ├── identifierList
-│   │   │   │   └── identifier
-│   │   │   │       └── S'str1'
-│   │   │   ├── E':'
-│   │   │   └── type_
-│   │   │       └── simpleType
-│   │   │           └── typeIdentifier
-│   │   │               └── I'string'
-│   │   ├── C';'
-│   │   ├── variableDeclaration
-│   │   │   ├── identifierList
-│   │   │   │   └── identifier
-│   │   │   │       └── S'str2'
-│   │   │   ├── E':'
-│   │   │   └── type_
-│   │   │       └── simpleType
-│   │   │           └── typeIdentifier
-│   │   │               └── I'string'
-│   │   ├── C';'
-│   │   ├── variableDeclaration
-│   │   │   ├── identifierList
+│   │   │   │   ├── identifier
+│   │   │   │   │   └── S'str1'
+│   │   │   │   ├── S','
+│   │   │   │   ├── identifier
+│   │   │   │   │   └── S'str2'
+│   │   │   │   ├── S','
 │   │   │   │   └── identifier
 │   │   │   │       └── S'str3'
 │   │   │   ├── E':'
@@ -50,8 +36,20 @@ program
 │   │   │   │   ├── identifier
 │   │   │   │   │   └── S'num2'
 │   │   │   │   ├── S','
+│   │   │   │   ├── identifier
+│   │   │   │   │   └── S'num3'
+│   │   │   │   ├── S','
+│   │   │   │   ├── identifier
+│   │   │   │   │   └── S'sum'
+│   │   │   │   ├── S','
+│   │   │   │   ├── identifier
+│   │   │   │   │   └── S'diff'
+│   │   │   │   ├── S','
+│   │   │   │   ├── identifier
+│   │   │   │   │   └── S'prod'
+│   │   │   │   ├── S','
 │   │   │   │   └── identifier
-│   │   │   │       └── S'num3'
+│   │   │   │       └── S'quot'
 │   │   │   ├── E':'
 │   │   │   └── type_
 │   │   │       └── simpleType
@@ -76,7 +74,7 @@ program
 │       │   │                               └── factor
 │       │   │                                   └── unsignedConstant
 │       │   │                                       └── string
-│       │   │                                           └── N''File 1:''
+│       │   │                                           └── N''Test 1:''
 │       │   ├── C';'
 │       │   ├── statement
 │       │   │   └── unlabelledStatement
@@ -93,7 +91,7 @@ program
 │       │   │                               └── factor
 │       │   │                                   └── unsignedConstant
 │       │   │                                       └── string
-│       │   │                                           └── N''File 2:''
+│       │   │                                           └── N''Test 2:''
 │       │   ├── C';'
 │       │   ├── statement
 │       │   │   └── unlabelledStatement
@@ -110,7 +108,7 @@ program
 │       │   │                               └── factor
 │       │   │                                   └── unsignedConstant
 │       │   │                                       └── string
-│       │   │                                           └── N''File 3:''
+│       │   │                                           └── N''Test 3:''
 │       │   ├── C';'
 │       │   ├── statement
 │       │   │   └── unlabelledStatement
@@ -146,7 +144,7 @@ program
 │       │   │                                   └── unsignedConstant
 │       │   │                                       └── unsignedNumber
 │       │   │                                           └── unsignedInteger
-│       │   │                                               └── N'660'
+│       │   │                                               └── N'66'
 │       │   ├── C';'
 │       │   ├── statement
 │       │   │   └── unlabelledStatement
@@ -164,7 +162,127 @@ program
 │       │   │                                   └── unsignedConstant
 │       │   │                                       └── unsignedNumber
 │       │   │                                           └── unsignedInteger
-│       │   │                                               └── N'4500'
+│       │   │                                               └── N'45'
+│       │   ├── C';'
+│       │   ├── statement
+│       │   │   └── unlabelledStatement
+│       │   │       └── simpleStatement
+│       │   │           └── assignmentStatement
+│       │   │               ├── variable
+│       │   │               │   └── identifier
+│       │   │               │       └── S'sum'
+│       │   │               ├── C':='
+│       │   │               └── expression
+│       │   │                   └── simpleExpression
+│       │   │                       ├── term
+│       │   │                       │   └── signedFactor
+│       │   │                       │       └── factor
+│       │   │                       │           └── variable
+│       │   │                       │               └── identifier
+│       │   │                       │                   └── S'num1'
+│       │   │                       ├── additiveoperator
+│       │   │                       │   └── M'+'
+│       │   │                       └── simpleExpression
+│       │   │                           ├── term
+│       │   │                           │   └── signedFactor
+│       │   │                           │       └── factor
+│       │   │                           │           └── variable
+│       │   │                           │               └── identifier
+│       │   │                           │                   └── S'num2'
+│       │   │                           ├── additiveoperator
+│       │   │                           │   └── M'+'
+│       │   │                           └── simpleExpression
+│       │   │                               └── term
+│       │   │                                   └── signedFactor
+│       │   │                                       └── factor
+│       │   │                                           └── variable
+│       │   │                                               └── identifier
+│       │   │                                                   └── S'num3'
+│       │   ├── C';'
+│       │   ├── statement
+│       │   │   └── unlabelledStatement
+│       │   │       └── simpleStatement
+│       │   │           └── assignmentStatement
+│       │   │               ├── variable
+│       │   │               │   └── identifier
+│       │   │               │       └── S'diff'
+│       │   │               ├── C':='
+│       │   │               └── expression
+│       │   │                   └── simpleExpression
+│       │   │                       ├── term
+│       │   │                       │   └── signedFactor
+│       │   │                       │       └── factor
+│       │   │                       │           └── variable
+│       │   │                       │               └── identifier
+│       │   │                       │                   └── S'num3'
+│       │   │                       ├── additiveoperator
+│       │   │                       │   └── S'-'
+│       │   │                       └── simpleExpression
+│       │   │                           ├── term
+│       │   │                           │   └── signedFactor
+│       │   │                           │       └── factor
+│       │   │                           │           └── variable
+│       │   │                           │               └── identifier
+│       │   │                           │                   └── S'num2'
+│       │   │                           ├── additiveoperator
+│       │   │                           │   └── S'-'
+│       │   │                           └── simpleExpression
+│       │   │                               └── term
+│       │   │                                   └── signedFactor
+│       │   │                                       └── factor
+│       │   │                                           └── variable
+│       │   │                                               └── identifier
+│       │   │                                                   └── S'num1'
+│       │   ├── C';'
+│       │   ├── statement
+│       │   │   └── unlabelledStatement
+│       │   │       └── simpleStatement
+│       │   │           └── assignmentStatement
+│       │   │               ├── variable
+│       │   │               │   └── identifier
+│       │   │               │       └── S'prod'
+│       │   │               ├── C':='
+│       │   │               └── expression
+│       │   │                   └── simpleExpression
+│       │   │                       └── term
+│       │   │                           ├── signedFactor
+│       │   │                           │   └── factor
+│       │   │                           │       └── variable
+│       │   │                           │           └── identifier
+│       │   │                           │               └── S'num1'
+│       │   │                           ├── multiplicativeoperator
+│       │   │                           │   └── S'*'
+│       │   │                           └── term
+│       │   │                               └── signedFactor
+│       │   │                                   └── factor
+│       │   │                                       └── variable
+│       │   │                                           └── identifier
+│       │   │                                               └── S'num2'
+│       │   ├── C';'
+│       │   ├── statement
+│       │   │   └── unlabelledStatement
+│       │   │       └── simpleStatement
+│       │   │           └── assignmentStatement
+│       │   │               ├── variable
+│       │   │               │   └── identifier
+│       │   │               │       └── S'quot'
+│       │   │               ├── C':='
+│       │   │               └── expression
+│       │   │                   └── simpleExpression
+│       │   │                       └── term
+│       │   │                           ├── signedFactor
+│       │   │                           │   └── factor
+│       │   │                           │       └── variable
+│       │   │                           │           └── identifier
+│       │   │                           │               └── S'num3'
+│       │   │                           ├── multiplicativeoperator
+│       │   │                           │   └── D'div'
+│       │   │                           └── term
+│       │   │                               └── signedFactor
+│       │   │                                   └── factor
+│       │   │                                       └── variable
+│       │   │                                           └── identifier
+│       │   │                                               └── S'num2'
 │       │   ├── C';'
 │       │   ├── statement
 │       │   │   └── unlabelledStatement
@@ -253,25 +371,6 @@ program
 │       │   │               │   └── S'writeln'
 │       │   │               ├── R'('
 │       │   │               ├── parameterList
-│       │   │               │   └── actualParameter
-│       │   │               │       └── expression
-│       │   │               │           └── simpleExpression
-│       │   │               │               └── term
-│       │   │               │                   └── signedFactor
-│       │   │               │                       └── factor
-│       │   │               │                           └── unsignedConstant
-│       │   │               │                               └── string
-│       │   │               │                                   └── N''Hello, World!''
-│       │   │               └── L')'
-│       │   ├── C';'
-│       │   ├── statement
-│       │   │   └── unlabelledStatement
-│       │   │       └── simpleStatement
-│       │   │           └── procedureStatement
-│       │   │               ├── identifier
-│       │   │               │   └── S'writeln'
-│       │   │               ├── R'('
-│       │   │               ├── parameterList
 │       │   │               │   ├── actualParameter
 │       │   │               │   │   └── expression
 │       │   │               │   │       └── simpleExpression
@@ -341,44 +440,6 @@ program
 │       │   │               │                           └── variable
 │       │   │               │                               └── identifier
 │       │   │               │                                   └── S'num3'
-│       │   │               └── L')'
-│       │   ├── C';'
-│       │   ├── statement
-│       │   │   └── unlabelledStatement
-│       │   │       └── simpleStatement
-│       │   │           └── procedureStatement
-│       │   │               ├── identifier
-│       │   │               │   └── S'writeln'
-│       │   │               ├── R'('
-│       │   │               ├── parameterList
-│       │   │               │   └── actualParameter
-│       │   │               │       └── expression
-│       │   │               │           └── simpleExpression
-│       │   │               │               └── term
-│       │   │               │                   └── signedFactor
-│       │   │               │                       └── factor
-│       │   │               │                           └── unsignedConstant
-│       │   │               │                               └── string
-│       │   │               │                                   └── N''This is a test.''
-│       │   │               └── L')'
-│       │   ├── C';'
-│       │   ├── statement
-│       │   │   └── unlabelledStatement
-│       │   │       └── simpleStatement
-│       │   │           └── procedureStatement
-│       │   │               ├── identifier
-│       │   │               │   └── S'write'
-│       │   │               ├── R'('
-│       │   │               ├── parameterList
-│       │   │               │   └── actualParameter
-│       │   │               │       └── expression
-│       │   │               │           └── simpleExpression
-│       │   │               │               └── term
-│       │   │               │                   └── signedFactor
-│       │   │               │                       └── factor
-│       │   │               │                           └── unsignedConstant
-│       │   │               │                               └── string
-│       │   │               │                                   └── N''Numbers: ''
 │       │   │               └── L')'
 │       │   ├── C';'
 │       │   ├── statement
@@ -477,6 +538,122 @@ program
 │       │   │               │                           └── unsignedConstant
 │       │   │               │                               └── string
 │       │   │               │                                   └── N''.''
+│       │   │               └── L')'
+│       │   ├── C';'
+│       │   ├── statement
+│       │   │   └── unlabelledStatement
+│       │   │       └── simpleStatement
+│       │   │           └── procedureStatement
+│       │   │               ├── identifier
+│       │   │               │   └── S'writeln'
+│       │   │               ├── R'('
+│       │   │               ├── parameterList
+│       │   │               │   ├── actualParameter
+│       │   │               │   │   └── expression
+│       │   │               │   │       └── simpleExpression
+│       │   │               │   │           └── term
+│       │   │               │   │               └── signedFactor
+│       │   │               │   │                   └── factor
+│       │   │               │   │                       └── unsignedConstant
+│       │   │               │   │                           └── string
+│       │   │               │   │                               └── N''Sum: ''
+│       │   │               │   ├── S','
+│       │   │               │   └── actualParameter
+│       │   │               │       └── expression
+│       │   │               │           └── simpleExpression
+│       │   │               │               └── term
+│       │   │               │                   └── signedFactor
+│       │   │               │                       └── factor
+│       │   │               │                           └── variable
+│       │   │               │                               └── identifier
+│       │   │               │                                   └── S'sum'
+│       │   │               └── L')'
+│       │   ├── C';'
+│       │   ├── statement
+│       │   │   └── unlabelledStatement
+│       │   │       └── simpleStatement
+│       │   │           └── procedureStatement
+│       │   │               ├── identifier
+│       │   │               │   └── S'writeln'
+│       │   │               ├── R'('
+│       │   │               ├── parameterList
+│       │   │               │   ├── actualParameter
+│       │   │               │   │   └── expression
+│       │   │               │   │       └── simpleExpression
+│       │   │               │   │           └── term
+│       │   │               │   │               └── signedFactor
+│       │   │               │   │                   └── factor
+│       │   │               │   │                       └── unsignedConstant
+│       │   │               │   │                           └── string
+│       │   │               │   │                               └── N''Difference: ''
+│       │   │               │   ├── S','
+│       │   │               │   └── actualParameter
+│       │   │               │       └── expression
+│       │   │               │           └── simpleExpression
+│       │   │               │               └── term
+│       │   │               │                   └── signedFactor
+│       │   │               │                       └── factor
+│       │   │               │                           └── variable
+│       │   │               │                               └── identifier
+│       │   │               │                                   └── S'diff'
+│       │   │               └── L')'
+│       │   ├── C';'
+│       │   ├── statement
+│       │   │   └── unlabelledStatement
+│       │   │       └── simpleStatement
+│       │   │           └── procedureStatement
+│       │   │               ├── identifier
+│       │   │               │   └── S'writeln'
+│       │   │               ├── R'('
+│       │   │               ├── parameterList
+│       │   │               │   ├── actualParameter
+│       │   │               │   │   └── expression
+│       │   │               │   │       └── simpleExpression
+│       │   │               │   │           └── term
+│       │   │               │   │               └── signedFactor
+│       │   │               │   │                   └── factor
+│       │   │               │   │                       └── unsignedConstant
+│       │   │               │   │                           └── string
+│       │   │               │   │                               └── N''Product: ''
+│       │   │               │   ├── S','
+│       │   │               │   └── actualParameter
+│       │   │               │       └── expression
+│       │   │               │           └── simpleExpression
+│       │   │               │               └── term
+│       │   │               │                   └── signedFactor
+│       │   │               │                       └── factor
+│       │   │               │                           └── variable
+│       │   │               │                               └── identifier
+│       │   │               │                                   └── S'prod'
+│       │   │               └── L')'
+│       │   ├── C';'
+│       │   ├── statement
+│       │   │   └── unlabelledStatement
+│       │   │       └── simpleStatement
+│       │   │           └── procedureStatement
+│       │   │               ├── identifier
+│       │   │               │   └── S'writeln'
+│       │   │               ├── R'('
+│       │   │               ├── parameterList
+│       │   │               │   ├── actualParameter
+│       │   │               │   │   └── expression
+│       │   │               │   │       └── simpleExpression
+│       │   │               │   │           └── term
+│       │   │               │   │               └── signedFactor
+│       │   │               │   │                   └── factor
+│       │   │               │   │                       └── unsignedConstant
+│       │   │               │   │                           └── string
+│       │   │               │   │                               └── N''Quotient: ''
+│       │   │               │   ├── S','
+│       │   │               │   └── actualParameter
+│       │   │               │       └── expression
+│       │   │               │           └── simpleExpression
+│       │   │               │               └── term
+│       │   │               │                   └── signedFactor
+│       │   │               │                       └── factor
+│       │   │               │                           └── variable
+│       │   │               │                               └── identifier
+│       │   │               │                                   └── S'quot'
 │       │   │               └── L')'
 │       │   ├── C';'
 │       │   └── statement

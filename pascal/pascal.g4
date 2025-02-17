@@ -147,6 +147,7 @@ type_
     : simpleType
     | structuredType
     | pointerType
+    | classType
     ;
 
 simpleType
@@ -665,6 +666,34 @@ WITH
     : 'WITH'
     ;
 
+CLASS
+    : 'CLASS'
+    ;
+
+PRIVATE
+    : 'PRIVATE'
+    ;
+
+PUBLIC
+    : 'PUBLIC'
+    ;
+
+PROTECTED
+    : 'PROTECTED'
+    ;
+
+CONSTRUCTOR
+    : 'CONSTRUCTOR'
+    ;
+
+DESTRUCTOR
+    : 'DESTRUCTOR'
+    ;
+
+CREATE
+    : 'CREATE'
+    ;
+
 PLUS
     : '+'
     ;
@@ -827,4 +856,61 @@ NUM_REAL
 
 fragment EXPONENT
     : ('E') ('+' | '-')? ('0' .. '9')+
+    ;
+
+classType
+    : CLASS classBody END
+    ;
+
+classBody
+    : (visibilitySection | classMember)*
+    ;
+
+visibilitySection
+    : PRIVATE COLON classMember*
+    | PUBLIC COLON classMember*
+    | PROTECTED COLON classMember*
+    ;
+
+classMember
+    : fieldDeclaration
+    | methodDeclaration
+    ;
+
+fieldDeclaration
+    : identifierList COLON type_ SEMI
+    ;
+
+methodDeclaration
+    : procedureDeclaration
+    | functionDeclaration
+    | constructorDeclaration
+    | destructorDeclaration
+    ;
+
+constructorDeclaration
+    : CONSTRUCTOR identifier (formalParameterList)? SEMI
+    ;
+
+destructorDeclaration
+    : DESTRUCTOR identifier SEMI
+    ;
+
+methodImplementation
+    : identifier DOT identifier (formalParameterList)? COLON resultType SEMI block
+    | identifier DOT identifier (formalParameterList)? SEMI block
+    | identifier DOT CONSTRUCTOR identifier (formalParameterList)? SEMI block
+    | identifier DOT DESTRUCTOR identifier SEMI block
+    ;
+
+objectCreation
+    : identifier DOT CREATE LPAREN parameterList? RPAREN
+    ;
+
+methodCall
+    : identifier DOT identifier LPAREN parameterList? RPAREN
+    ;
+
+classInstanceVariable
+    : identifier COLON identifier SEMI
     ;
