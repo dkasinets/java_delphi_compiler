@@ -3,13 +3,15 @@ grammar delphi;
 program: 'program' IDENT '(' IDENT ')' ';' classDeclaration* constructorImplementation* destructorImplementation* methodImplementation* variableDeclaration* 'begin' statement* 'end' '.';
 
 classDeclaration: 'type' IDENT '=' 'class'
-                  ('public' memberDeclaration*)?
-                  ('private' memberDeclaration*)?
+                  (visibilitySection)*
                   'end' ';';
+
+visibilitySection: ('public' | 'private') memberDeclaration*;
 
 memberDeclaration: constructorDeclaration
                   | destructorDeclaration
-                  | methodDeclaration;
+                  | methodDeclaration
+                  | fieldDeclaration;
 
 constructorDeclaration: 'constructor' IDENT ';';
 
@@ -23,19 +25,29 @@ methodDeclaration: 'procedure' IDENT ';';
 
 methodImplementation: 'procedure' IDENT '.' IDENT ';' 'begin' statement* 'end' ';';
 
-variableDeclaration: 'var' IDENT ':' IDENT ';';
+fieldDeclaration: IDENT ':' type_ ';';
 
-statement: assignment
+variableDeclaration: 'var' IDENT ':' type_ ';';
+
+type_: 'Integer' | 'String' | 'Boolean' | IDENT;
+
+statement: variableAssignment
+         | assignment
          | methodCall
-         | writelnCall;
+         | writelnCall
+         | variableDeclaration;
 
-assignment: IDENT ':=' IDENT '.' IDENT ('(' expression? ')')? ';';
+variableAssignment: IDENT ':=' expression ';';
+
+assignment: IDENT ':=' expression ';';
 
 methodCall: IDENT '.' IDENT ('(' expression? ')')? (';'|NEWLINE);
 
 writelnCall: 'WriteLn' '(' expression ')' ';';
 
-expression: INTEGER | IDENT;
+objectCreation: IDENT '.' IDENT '('? ')'?;
+
+expression: INTEGER | IDENT | objectCreation;
 
 IDENT: [a-zA-Z_][a-zA-Z_0-9]*;
 INTEGER: [0-9]+;

@@ -1,0 +1,60 @@
+program
+├── P'program'
+├── I'x'
+├── P'('
+├── I'x'
+├── P')'
+├── P';'
+├── classDeclaration
+│   ├── P'type'
+│   ├── I'ClassDeclaration'
+│   ├── P'='
+│   ├── P'class'
+│   ├── P'public'
+│   ├── memberDeclaration
+│   │   └── methodDeclaration
+│   │       ├── P'procedure'
+│   │       ├── I'Method'
+│   │       └── P';'
+│   ├── P'end'
+│   └── P';'
+├── methodImplementation
+│   ├── P'procedure'
+│   ├── I'ClassDeclaration'
+│   ├── P'.'
+│   ├── I'Method'
+│   ├── P';'
+│   ├── P'begin'
+│   ├── statement
+│   │   └── writelnCall
+│   │       ├── I'WriteLn'
+│   │       ├── P'('
+│   │       ├── expression
+│   │       │   └── C'78'
+│   │       ├── P')'
+│   │       └── P';'
+│   ├── P'end'
+│   └── P';'
+├── variableDeclaration
+│   ├── P'var'
+│   ├── I'classInit'
+│   ├── W':'
+│   ├── I'ClassDeclaration'
+│   └── P';'
+├── P'begin'
+├── statement
+│   └── assignment
+│       ├── I'classInit'
+│       ├── P':='
+│       ├── I'ClassDeclaration'
+│       ├── P'.'
+│       ├── I'Create'
+│       └── P';'
+├── statement
+│   └── methodCall
+│       ├── I'classInit'
+│       ├── P'.'
+│       ├── I'Method'
+│       └── P';'
+├── P'end'
+└── P'.'

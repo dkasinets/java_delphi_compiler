@@ -12,6 +12,7 @@ public class delphiCustomInterpreter {
         try {
             // Read Pascal source file
             String fileName = args[0];
+            File file = new File(fileName);
             CharStream input = CharStreams.fromFileName(fileName);
 
             // Lexer and parser
@@ -23,7 +24,9 @@ public class delphiCustomInterpreter {
             ParseTree tree = parser.program(); // Start parsing from 'program' rule
 
             PrintableTree printableTree = new PrintableTree(tree);
-            printableTree.saveToFile("./ast", "AST_Tree.txt");
+            String baseName = file.getName().substring(0, file.getName().lastIndexOf('.'));
+            String astFileName = "AST_Tree_" + baseName + ".txt";
+            printableTree.saveToFile("./ast", astFileName);
             
             // Walk and interpret the AST
             delphiCustomVisitor interpreter = new delphiCustomVisitor();
