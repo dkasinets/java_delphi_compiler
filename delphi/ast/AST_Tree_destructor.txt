@@ -4,26 +4,27 @@ program
 ├── P'('
 ├── I'x'
 ├── P')'
-├── P';'
+├── N';'
 ├── classDeclaration
 │   ├── P'type'
 │   ├── I'ClassDeclaration'
 │   ├── P'='
 │   ├── P'class'
-│   ├── P'public'
-│   ├── memberDeclaration
-│   │   └── destructorDeclaration
-│   │       ├── P'destructor'
-│   │       ├── I'Destroy'
-│   │       └── P';'
+│   ├── visibilitySection
+│   │   ├── P'public'
+│   │   └── memberDeclaration
+│   │       └── destructorDeclaration
+│   │           ├── P'destructor'
+│   │           ├── I'Destroy'
+│   │           └── N';'
 │   ├── P'end'
-│   └── P';'
+│   └── N';'
 ├── destructorImplementation
 │   ├── P'destructor'
 │   ├── I'ClassDeclaration'
 │   ├── P'.'
 │   ├── I'Destroy'
-│   ├── P';'
+│   ├── N';'
 │   ├── P'begin'
 │   ├── statement
 │   │   └── writelnCall
@@ -32,29 +33,32 @@ program
 │   │       ├── expression
 │   │       │   └── C'34'
 │   │       ├── P')'
-│   │       └── P';'
+│   │       └── N';'
 │   ├── P'end'
-│   └── P';'
+│   └── N';'
 ├── variableDeclaration
 │   ├── P'var'
 │   ├── I'classInit'
-│   ├── W':'
-│   ├── I'ClassDeclaration'
-│   └── P';'
+│   ├── S':'
+│   ├── type_
+│   │   └── I'ClassDeclaration'
+│   └── N';'
 ├── P'begin'
 ├── statement
-│   └── assignment
+│   └── variableAssignment
 │       ├── I'classInit'
 │       ├── P':='
-│       ├── I'ClassDeclaration'
-│       ├── P'.'
-│       ├── I'Create'
-│       └── P';'
+│       ├── expression
+│       │   └── objectCreation
+│       │       ├── I'ClassDeclaration'
+│       │       ├── P'.'
+│       │       └── I'Create'
+│       └── N';'
 ├── statement
 │   └── methodCall
 │       ├── I'classInit'
 │       ├── P'.'
 │       ├── I'Destroy'
-│       └── P';'
+│       └── N';'
 ├── P'end'
 └── P'.'

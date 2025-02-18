@@ -4,26 +4,27 @@ program
 ├── P'('
 ├── I'x'
 ├── P')'
-├── P';'
+├── N';'
 ├── classDeclaration
 │   ├── P'type'
 │   ├── I'ClassDeclaration'
 │   ├── P'='
 │   ├── P'class'
-│   ├── P'public'
-│   ├── memberDeclaration
-│   │   └── constructorDeclaration
-│   │       ├── P'constructor'
-│   │       ├── I'Create'
-│   │       └── P';'
+│   ├── visibilitySection
+│   │   ├── P'public'
+│   │   └── memberDeclaration
+│   │       └── constructorDeclaration
+│   │           ├── P'constructor'
+│   │           ├── I'Create'
+│   │           └── N';'
 │   ├── P'end'
-│   └── P';'
+│   └── N';'
 ├── constructorImplementation
 │   ├── P'constructor'
 │   ├── I'ClassDeclaration'
 │   ├── P'.'
 │   ├── I'Create'
-│   ├── P';'
+│   ├── N';'
 │   ├── P'begin'
 │   ├── statement
 │   │   └── writelnCall
@@ -32,23 +33,26 @@ program
 │   │       ├── expression
 │   │       │   └── C'12'
 │   │       ├── P')'
-│   │       └── P';'
+│   │       └── N';'
 │   ├── P'end'
-│   └── P';'
+│   └── N';'
 ├── variableDeclaration
 │   ├── P'var'
 │   ├── I'classInit'
-│   ├── W':'
-│   ├── I'ClassDeclaration'
-│   └── P';'
+│   ├── S':'
+│   ├── type_
+│   │   └── I'ClassDeclaration'
+│   └── N';'
 ├── P'begin'
 ├── statement
-│   └── assignment
+│   └── variableAssignment
 │       ├── I'classInit'
 │       ├── P':='
-│       ├── I'ClassDeclaration'
-│       ├── P'.'
-│       ├── I'Create'
-│       └── P';'
+│       ├── expression
+│       │   └── objectCreation
+│       │       ├── I'ClassDeclaration'
+│       │       ├── P'.'
+│       │       └── I'Create'
+│       └── N';'
 ├── P'end'
 └── P'.'

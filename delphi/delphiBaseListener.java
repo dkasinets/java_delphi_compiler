@@ -40,6 +40,18 @@ public class delphiBaseListener implements delphiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterVisibilitySection(delphiParser.VisibilitySectionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVisibilitySection(delphiParser.VisibilitySectionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMemberDeclaration(delphiParser.MemberDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -64,18 +76,6 @@ public class delphiBaseListener implements delphiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConstructorImplementation(delphiParser.ConstructorImplementationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitConstructorImplementation(delphiParser.ConstructorImplementationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterDestructorDeclaration(delphiParser.DestructorDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -83,6 +83,18 @@ public class delphiBaseListener implements delphiListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDestructorDeclaration(delphiParser.DestructorDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConstructorImplementation(delphiParser.ConstructorImplementationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConstructorImplementation(delphiParser.ConstructorImplementationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -124,6 +136,18 @@ public class delphiBaseListener implements delphiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFieldDeclaration(delphiParser.FieldDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFieldDeclaration(delphiParser.FieldDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariableDeclaration(delphiParser.VariableDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -136,6 +160,18 @@ public class delphiBaseListener implements delphiListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterType_(delphiParser.Type_Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitType_(delphiParser.Type_Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterStatement(delphiParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -143,6 +179,18 @@ public class delphiBaseListener implements delphiListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitStatement(delphiParser.StatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVariableAssignment(delphiParser.VariableAssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVariableAssignment(delphiParser.VariableAssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -179,6 +227,18 @@ public class delphiBaseListener implements delphiListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitWritelnCall(delphiParser.WritelnCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterObjectCreation(delphiParser.ObjectCreationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitObjectCreation(delphiParser.ObjectCreationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
