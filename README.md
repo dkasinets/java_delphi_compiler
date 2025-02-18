@@ -1,5 +1,10 @@
 # Simple Delphi Interpreter
 
+## Group 3
+**Members:**
+- Detravious Jamari Brinkley
+- Dzmitry Kasinets
+
 ## Setup Instructions
 
 ### Install Dependencies
