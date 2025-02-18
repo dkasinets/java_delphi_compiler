@@ -18,7 +18,7 @@ public class PrintableTree {
 
     private String treeString(ParseTree node, String prefix) {
         if (node instanceof RuleNode) {
-            String ruleName = pascalParser.ruleNames[((RuleNode) node).getRuleContext().getRuleIndex()];
+            String ruleName = delphiParser.ruleNames[((RuleNode) node).getRuleContext().getRuleIndex()];
             StringBuilder builder = new StringBuilder(ruleName);
 
             for (int i = 0; i < node.getChildCount(); i++) {
@@ -41,8 +41,8 @@ public class PrintableTree {
 
     private String visitTerminal(TerminalNode node) {
         int type = node.getSymbol().getType();
-        if (type >= 0 && type < pascalLexer.ruleNames.length) {
-            String ruleName = pascalLexer.ruleNames[type];
+        if (type >= 0 && type < delphiLexer.ruleNames.length) {
+            String ruleName = delphiLexer.ruleNames[type];
             char id = ruleName.startsWith("T__") ? 'P' : ruleName.charAt(0);
             return id + "'" + node.getText() + "'";
         }
