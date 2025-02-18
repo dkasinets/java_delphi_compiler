@@ -13,9 +13,9 @@ memberDeclaration: constructorDeclaration
 
 constructorDeclaration: 'constructor' IDENT ';';
 
-constructorImplementation: 'constructor' IDENT '.' IDENT ';' 'begin' statement* 'end' ';';
-
 destructorDeclaration: 'destructor' IDENT ';';
+
+constructorImplementation: 'constructor' IDENT '.' IDENT ';' 'begin' statement* 'end' ';';
 
 destructorImplementation: 'destructor' IDENT '.' IDENT ';' 'begin' statement* 'end' ';';
 
@@ -29,9 +29,9 @@ statement: assignment
          | methodCall
          | writelnCall;
 
-assignment: IDENT ':=' IDENT '.' IDENT ';';
+assignment: IDENT ':=' IDENT '.' IDENT ('(' expression? ')')? ';';
 
-methodCall: IDENT '.' IDENT '(' ')' ';';
+methodCall: IDENT '.' IDENT ('(' expression? ')')? (';'|NEWLINE);
 
 writelnCall: 'WriteLn' '(' expression ')' ';';
 
@@ -40,4 +40,6 @@ expression: INTEGER | IDENT;
 IDENT: [a-zA-Z_][a-zA-Z_0-9]*;
 INTEGER: [0-9]+;
 COLON: ':';
-WS: [ \t\r\n]+ -> skip;
+SEMI: ';';
+NEWLINE: '\r'? '\n' -> skip;
+WS: [ \t]+ -> skip;

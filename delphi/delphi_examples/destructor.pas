@@ -14,6 +14,6 @@ end;
 var
     classInit: ClassDeclaration;
 begin
-    classInit := ClassDeclaration.Create
+    classInit := ClassDeclaration.Create;
     classInit.Destroy;
 end.

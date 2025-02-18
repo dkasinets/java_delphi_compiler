@@ -12,17 +12,17 @@ program
 │   ├── P'class'
 │   ├── P'public'
 │   ├── memberDeclaration
-│   │   └── constructorDeclaration
-│   │       ├── P'constructor'
-│   │       ├── I'Create'
+│   │   └── destructorDeclaration
+│   │       ├── P'destructor'
+│   │       ├── I'Destroy'
 │   │       └── P';'
 │   ├── P'end'
 │   └── P';'
-├── constructorImplementation
-│   ├── P'constructor'
+├── destructorImplementation
+│   ├── P'destructor'
 │   ├── I'ClassDeclaration'
 │   ├── P'.'
-│   ├── I'Create'
+│   ├── I'Destroy'
 │   ├── P';'
 │   ├── P'begin'
 │   ├── statement
@@ -30,7 +30,7 @@ program
 │   │       ├── I'WriteLn'
 │   │       ├── P'('
 │   │       ├── expression
-│   │       │   └── C'12'
+│   │       │   └── C'34'
 │   │       ├── P')'
 │   │       └── P';'
 │   ├── P'end'
@@ -49,6 +49,12 @@ program
 │       ├── I'ClassDeclaration'
 │       ├── P'.'
 │       ├── I'Create'
+│       └── P';'
+├── statement
+│   └── methodCall
+│       ├── I'classInit'
+│       ├── P'.'
+│       ├── I'Destroy'
 │       └── P';'
 ├── P'end'
 └── P'.'
