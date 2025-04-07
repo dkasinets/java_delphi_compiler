@@ -9,7 +9,7 @@ begin
 
     for i := 1 to globalValue do
     begin
-        localValue := i * 2;
+        localValue := i;
         WriteLn(globalValue);
         WriteLn(localValue);
     end;
