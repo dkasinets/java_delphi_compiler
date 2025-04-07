@@ -7,7 +7,7 @@ begin
     number := 5; 
     for i := 1 to number do
     begin
-        WriteLn(0);
+        WriteLn(100);
         break;
     end;
 end.

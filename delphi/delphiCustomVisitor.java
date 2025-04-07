@@ -1,9 +1,11 @@
 import org.antlr.v4.runtime.tree.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
     private final Map<String, Integer> fieldValues = new HashMap<>();
+    private boolean shouldContinue = false;
 
     @Override
     public Void visitConstructorImplementation(delphiParser.ConstructorImplementationContext ctx) {
@@ -21,6 +23,8 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
 
     @Override
     public Void visitWritelnCall(delphiParser.WritelnCallContext ctx) {
+        if (shouldContinue) return null;
+
         String value = ctx.expression().getText();
         if (fieldValues.containsKey(value)) {
             System.out.println(fieldValues.get(value));
@@ -33,17 +37,45 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
         }
         return null;
     }
-    
+
     @Override
     public Void visitStatement(delphiParser.StatementContext ctx) {
+        // Skip execution of any statements after continue
+        if (shouldContinue) return null;
         return visitChildren(ctx);
+    }
+
+    @Override
+    public Void visitContinueStatement(delphiParser.ContinueStatementContext ctx) {
+        shouldContinue = true; // Mark continue so we skip remaining statements in the loop iteration
+        return null;
+    }
+
+    @Override
+    public Void visitForStatement(delphiParser.ForStatementContext ctx) {
+        String loopVar = ctx.IDENT().getText();
+        int from = getValue(ctx.expression(0));
+        int to = getValue(ctx.expression(1));
+
+        for (int i = from; i <= to; i++) {
+            fieldValues.put(loopVar, i);
+            shouldContinue = false;
+
+            List<delphiParser.StatementContext> statements = ctx.statement();
+            for (delphiParser.StatementContext stmt : statements) {
+                visit(stmt);
+                if (shouldContinue) break; // skip remaining statements in this iteration
+            }
+        }
+
+        return null;
     }
 
     @Override
     public Void visitProgram(delphiParser.ProgramContext ctx) {
         return visitChildren(ctx);
     }
-    
+
     @Override
     public Void visitConstructorDeclaration(delphiParser.ConstructorDeclarationContext ctx) {
         return visitChildren(ctx);
@@ -51,14 +83,29 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
 
     @Override
     public Void visitAssignment(delphiParser.AssignmentContext ctx) {
+        if (shouldContinue) return null;
+
         String varName = ctx.IDENT().getText();
         String value = ctx.expression().getText();
-        
+
         try {
             fieldValues.put(varName, Integer.parseInt(value));
         } catch (NumberFormatException e) {
-            // Handle non-integer values if necessary
+            fieldValues.put(varName, fieldValues.getOrDefault(value, 0));
         }
+
         return null;
+    }
+
+    private int getValue(delphiParser.ExpressionContext ctx) {
+        String text = ctx.getText();
+        if (fieldValues.containsKey(text)) {
+            return fieldValues.get(text);
+        }
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 }
