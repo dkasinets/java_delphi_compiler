@@ -9,6 +9,7 @@ topLevelDeclaration:
     | constructorImplementation
     | destructorImplementation
     | methodImplementation
+    | functionImplementation              
     | variableDeclaration
     ;
 
@@ -40,6 +41,10 @@ methodDeclaration: 'procedure' IDENT ';';
 methodImplementation: 'procedure' IDENT '.' IDENT ';'
                        variableDeclaration*
                        'begin' statement* 'end' ';';
+
+functionImplementation: 'function' IDENT ':' type_ ';'
+                         variableDeclaration*
+                         'begin' statement* 'end' ';';     
 
 fieldDeclaration: IDENT ':' type_ ';';
 
