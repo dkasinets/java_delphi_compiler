@@ -1,0 +1,94 @@
+program
+├── P'program'
+├── I'x'
+├── P'('
+├── I'x'
+├── P')'
+├── N';'
+├── classDeclaration
+│   ├── P'type'
+│   ├── I'ClassDeclaration'
+│   ├── P'='
+│   ├── P'class'
+│   ├── visibilitySection
+│   │   ├── P'private'
+│   │   └── memberDeclaration
+│   │       └── fieldDeclaration
+│   │           ├── I'SecretValue'
+│   │           ├── S':'
+│   │           ├── type_
+│   │           │   └── P'Integer'
+│   │           └── N';'
+│   ├── visibilitySection
+│   │   ├── P'public'
+│   │   ├── memberDeclaration
+│   │   │   └── constructorDeclaration
+│   │   │       ├── P'constructor'
+│   │   │       ├── I'Create'
+│   │   │       └── N';'
+│   │   └── memberDeclaration
+│   │       └── methodDeclaration
+│   │           ├── P'procedure'
+│   │           ├── I'ShowSecret'
+│   │           └── N';'
+│   ├── P'end'
+│   └── N';'
+├── constructorImplementation
+│   ├── P'constructor'
+│   ├── I'ClassDeclaration'
+│   ├── P'.'
+│   ├── I'Create'
+│   ├── N';'
+│   ├── P'begin'
+│   ├── statement
+│   │   └── variableAssignment
+│   │       ├── I'SecretValue'
+│   │       ├── P':='
+│   │       ├── expression
+│   │       │   └── C'56'
+│   │       └── N';'
+│   ├── P'end'
+│   └── N';'
+├── methodImplementation
+│   ├── P'procedure'
+│   ├── I'ClassDeclaration'
+│   ├── P'.'
+│   ├── I'ShowSecret'
+│   ├── N';'
+│   ├── P'begin'
+│   ├── statement
+│   │   └── writelnCall
+│   │       ├── I'WriteLn'
+│   │       ├── P'('
+│   │       ├── expression
+│   │       │   └── I'SecretValue'
+│   │       ├── P')'
+│   │       └── N';'
+│   ├── P'end'
+│   └── N';'
+├── variableDeclaration
+│   ├── P'var'
+│   ├── I'classInit'
+│   ├── S':'
+│   ├── type_
+│   │   └── I'ClassDeclaration'
+│   └── N';'
+├── P'begin'
+├── statement
+│   └── variableAssignment
+│       ├── I'classInit'
+│       ├── P':='
+│       ├── expression
+│       │   └── objectCreation
+│       │       ├── I'ClassDeclaration'
+│       │       ├── P'.'
+│       │       └── I'Create'
+│       └── N';'
+├── statement
+│   └── methodCall
+│       ├── I'classInit'
+│       ├── P'.'
+│       ├── I'ShowSecret'
+│       └── N';'
+├── P'end'
+└── P'.'

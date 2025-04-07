@@ -1,0 +1,64 @@
+program
+├── P'program'
+├── I'x'
+├── P'('
+├── I'x'
+├── P')'
+├── N';'
+├── classDeclaration
+│   ├── P'type'
+│   ├── I'ClassDeclaration'
+│   ├── P'='
+│   ├── P'class'
+│   ├── visibilitySection
+│   │   ├── P'public'
+│   │   └── memberDeclaration
+│   │       └── methodDeclaration
+│   │           ├── P'procedure'
+│   │           ├── I'Method'
+│   │           └── N';'
+│   ├── P'end'
+│   └── N';'
+├── methodImplementation
+│   ├── P'procedure'
+│   ├── I'ClassDeclaration'
+│   ├── P'.'
+│   ├── I'Method'
+│   ├── N';'
+│   ├── P'begin'
+│   ├── statement
+│   │   └── writelnCall
+│   │       ├── I'WriteLn'
+│   │       ├── P'('
+│   │       ├── expression
+│   │       │   └── C'78'
+│   │       ├── P')'
+│   │       └── N';'
+│   ├── P'end'
+│   └── N';'
+├── variableDeclaration
+│   ├── P'var'
+│   ├── I'classInit'
+│   ├── S':'
+│   ├── type_
+│   │   └── I'ClassDeclaration'
+│   └── N';'
+├── P'begin'
+├── statement
+│   └── variableAssignment
+│       ├── I'classInit'
+│       ├── P':='
+│       ├── expression
+│       │   └── objectCreation
+│       │       ├── I'ClassDeclaration'
+│       │       ├── P'.'
+│       │       └── I'Create'
+│       └── N';'
+├── statement
+│   └── methodCall
+│       ├── I'classInit'
+│       ├── P'.'
+│       ├── I'Method'
+│       └── N';'
+├── P'end'
+└── P'.'

@@ -1,0 +1,30 @@
+Implement the rest of Delphi features.
+The main challenge is that I need to capture symbolic information, 
+since the main tasks of this project cannot be implemented using an evaluate-as-you-parse strategy.
+
+I need to:
+- Rely on ANTLR's built-in parse tree generator and implement an evaluator 
+over the parse tree to implement all the language features. 
+Using visitors feature in ANTLR is probably the best. 
+
+Specific Requirements 
+Part of the language to implement 
+Re-implement the previous part of the language.
+Add:
+- 1. While-do and for-do loops
+- 2. break and continue keywords 
+- 3. user-defined procedures and functions 
+
+Implementing (Static) Scoping
+- Each time a new block opens (while, for statements) a new scope is created 
+- Functions (procedures) create scopes as well. Only global variables are visible in the functions (together with their local scopes)
+- Chain the scopes as they are created and keep track what is visible where 
+
+Test Cases
+- Write test cases to cover the entire language 
+- You can/should re-use the test cases from Project 1 (for the common part)
+
+What to turn in
+- Turn in all the files needed to run the project. 
+- This includes the grammar file, Java sources needed, and test cases (.pas extension)
+- The README file (indication how to run the code)
