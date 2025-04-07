@@ -59,7 +59,10 @@ statement: assignment
          | writelnCall
          | variableDeclaration
          | whileStatement
-         | forStatement;
+         | forStatement
+         | breakStatement;
+
+breakStatement: 'break' ';';
 
 whileStatement: 'while' expression 'do' 'begin' statement* 'end' ';';
 
