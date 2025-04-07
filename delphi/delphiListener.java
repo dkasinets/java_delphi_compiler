@@ -147,6 +147,16 @@ public interface delphiListener extends ParseTreeListener {
 	 */
 	void exitStatement(delphiParser.StatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link delphiParser#whileStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhileStatement(delphiParser.WhileStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link delphiParser#whileStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhileStatement(delphiParser.WhileStatementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link delphiParser#variableAssignment}.
 	 * @param ctx the parse tree
 	 */
@@ -197,13 +207,51 @@ public interface delphiListener extends ParseTreeListener {
 	 */
 	void exitObjectCreation(delphiParser.ObjectCreationContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link delphiParser#expression}.
+	 * Enter a parse tree produced by the {@code objectCreationExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpression(delphiParser.ExpressionContext ctx);
+	void enterObjectCreationExpression(delphiParser.ObjectCreationExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link delphiParser#expression}.
+	 * Exit a parse tree produced by the {@code objectCreationExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpression(delphiParser.ExpressionContext ctx);
+	void exitObjectCreationExpression(delphiParser.ObjectCreationExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code identifierExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdentifierExpression(delphiParser.IdentifierExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code identifierExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdentifierExpression(delphiParser.IdentifierExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code equalityExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterEqualityExpression(delphiParser.EqualityExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code equalityExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitEqualityExpression(delphiParser.EqualityExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code integerExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterIntegerExpression(delphiParser.IntegerExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code integerExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitIntegerExpression(delphiParser.IntegerExpressionContext ctx);
 }

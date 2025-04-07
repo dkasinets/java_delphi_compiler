@@ -94,6 +94,12 @@ public interface delphiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStatement(delphiParser.StatementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link delphiParser#whileStatement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhileStatement(delphiParser.WhileStatementContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link delphiParser#variableAssignment}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -124,9 +130,31 @@ public interface delphiVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitObjectCreation(delphiParser.ObjectCreationContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link delphiParser#expression}.
+	 * Visit a parse tree produced by the {@code objectCreationExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpression(delphiParser.ExpressionContext ctx);
+	T visitObjectCreationExpression(delphiParser.ObjectCreationExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code identifierExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdentifierExpression(delphiParser.IdentifierExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code equalityExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEqualityExpression(delphiParser.EqualityExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code integerExpression}
+	 * labeled alternative in {@link delphiParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIntegerExpression(delphiParser.IntegerExpressionContext ctx);
 }

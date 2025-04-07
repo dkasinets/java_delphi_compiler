@@ -35,7 +35,10 @@ statement: variableAssignment
          | assignment
          | methodCall
          | writelnCall
-         | variableDeclaration;
+         | variableDeclaration
+         | whileStatement;
+
+whileStatement: 'while' expression 'do' 'begin' statement* 'end' ';';
 
 variableAssignment: IDENT ':=' expression ';';
 
@@ -47,7 +50,12 @@ writelnCall: 'WriteLn' '(' expression ')' ';';
 
 objectCreation: IDENT '.' IDENT '('? ')'?;
 
-expression: INTEGER | IDENT | objectCreation;
+expression
+    : expression '=' expression     # equalityExpression
+    | IDENT                         # identifierExpression
+    | INTEGER                       # integerExpression
+    | objectCreation                # objectCreationExpression
+    ;
 
 IDENT: [a-zA-Z_][a-zA-Z_0-9]*;
 INTEGER: [0-9]+;
