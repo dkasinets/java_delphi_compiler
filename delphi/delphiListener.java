@@ -17,6 +17,16 @@ public interface delphiListener extends ParseTreeListener {
 	 */
 	void exitProgram(delphiParser.ProgramContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link delphiParser#topLevelDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterTopLevelDeclaration(delphiParser.TopLevelDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link delphiParser#topLevelDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitTopLevelDeclaration(delphiParser.TopLevelDeclarationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link delphiParser#classDeclaration}.
 	 * @param ctx the parse tree
 	 */
@@ -107,6 +117,16 @@ public interface delphiListener extends ParseTreeListener {
 	 */
 	void exitMethodImplementation(delphiParser.MethodImplementationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link delphiParser#functionImplementation}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionImplementation(delphiParser.FunctionImplementationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link delphiParser#functionImplementation}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionImplementation(delphiParser.FunctionImplementationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link delphiParser#fieldDeclaration}.
 	 * @param ctx the parse tree
 	 */
@@ -126,6 +146,16 @@ public interface delphiListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVariableDeclaration(delphiParser.VariableDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link delphiParser#varDecl}.
+	 * @param ctx the parse tree
+	 */
+	void enterVarDecl(delphiParser.VarDeclContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link delphiParser#varDecl}.
+	 * @param ctx the parse tree
+	 */
+	void exitVarDecl(delphiParser.VarDeclContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link delphiParser#type_}.
 	 * @param ctx the parse tree
@@ -147,6 +177,26 @@ public interface delphiListener extends ParseTreeListener {
 	 */
 	void exitStatement(delphiParser.StatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link delphiParser#breakStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterBreakStatement(delphiParser.BreakStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link delphiParser#breakStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitBreakStatement(delphiParser.BreakStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link delphiParser#continueStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterContinueStatement(delphiParser.ContinueStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link delphiParser#continueStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitContinueStatement(delphiParser.ContinueStatementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link delphiParser#whileStatement}.
 	 * @param ctx the parse tree
 	 */
@@ -157,15 +207,15 @@ public interface delphiListener extends ParseTreeListener {
 	 */
 	void exitWhileStatement(delphiParser.WhileStatementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link delphiParser#variableAssignment}.
+	 * Enter a parse tree produced by {@link delphiParser#forStatement}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariableAssignment(delphiParser.VariableAssignmentContext ctx);
+	void enterForStatement(delphiParser.ForStatementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link delphiParser#variableAssignment}.
+	 * Exit a parse tree produced by {@link delphiParser#forStatement}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariableAssignment(delphiParser.VariableAssignmentContext ctx);
+	void exitForStatement(delphiParser.ForStatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link delphiParser#assignment}.
 	 * @param ctx the parse tree

@@ -61,17 +61,4 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
         }
         return null;
     }
-    
-    @Override
-    public Void visitVariableAssignment(delphiParser.VariableAssignmentContext ctx) {
-        String varName = ctx.IDENT().getText();
-        String value = ctx.expression().getText();
-        
-        try {
-            fieldValues.put(varName, Integer.parseInt(value));
-        } catch (NumberFormatException e) {
-            fieldValues.put(varName, fieldValues.getOrDefault(value, 0));
-        }
-        return null;
-    }
 }

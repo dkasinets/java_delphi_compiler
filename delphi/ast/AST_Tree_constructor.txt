@@ -5,47 +5,51 @@ program
 ├── I'x'
 ├── P')'
 ├── N';'
-├── classDeclaration
-│   ├── P'type'
-│   ├── I'ClassDeclaration'
-│   ├── P'='
-│   ├── P'class'
-│   ├── visibilitySection
-│   │   ├── P'public'
-│   │   └── memberDeclaration
-│   │       └── constructorDeclaration
-│   │           ├── P'constructor'
-│   │           ├── I'Create'
-│   │           └── N';'
-│   ├── P'end'
-│   └── N';'
-├── constructorImplementation
-│   ├── P'constructor'
-│   ├── I'ClassDeclaration'
-│   ├── P'.'
-│   ├── I'Create'
-│   ├── N';'
-│   ├── P'begin'
-│   ├── statement
-│   │   └── writelnCall
-│   │       ├── I'WriteLn'
-│   │       ├── P'('
-│   │       ├── expression
-│   │       │   └── C'12'
-│   │       ├── P')'
-│   │       └── N';'
-│   ├── P'end'
-│   └── N';'
-├── variableDeclaration
-│   ├── P'var'
-│   ├── I'classInit'
-│   ├── S':'
-│   ├── type_
-│   │   └── I'ClassDeclaration'
-│   └── N';'
+├── topLevelDeclaration
+│   └── classDeclaration
+│       ├── P'type'
+│       ├── I'ClassDeclaration'
+│       ├── P'='
+│       ├── P'class'
+│       ├── visibilitySection
+│       │   ├── P'public'
+│       │   └── memberDeclaration
+│       │       └── constructorDeclaration
+│       │           ├── P'constructor'
+│       │           ├── I'Create'
+│       │           └── N';'
+│       ├── P'end'
+│       └── N';'
+├── topLevelDeclaration
+│   └── constructorImplementation
+│       ├── P'constructor'
+│       ├── I'ClassDeclaration'
+│       ├── P'.'
+│       ├── I'Create'
+│       ├── N';'
+│       ├── P'begin'
+│       ├── statement
+│       │   └── writelnCall
+│       │       ├── I'WriteLn'
+│       │       ├── P'('
+│       │       ├── expression
+│       │       │   └── C'12'
+│       │       ├── P')'
+│       │       └── N';'
+│       ├── P'end'
+│       └── N';'
+├── topLevelDeclaration
+│   └── variableDeclaration
+│       ├── P'var'
+│       └── varDecl
+│           ├── I'classInit'
+│           ├── S':'
+│           ├── type_
+│           │   └── I'ClassDeclaration'
+│           └── N';'
 ├── P'begin'
 ├── statement
-│   └── variableAssignment
+│   └── assignment
 │       ├── I'classInit'
 │       ├── P':='
 │       ├── expression
