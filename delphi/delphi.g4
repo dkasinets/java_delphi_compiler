@@ -58,9 +58,12 @@ statement: assignment
          | methodCall
          | writelnCall
          | variableDeclaration
-         | whileStatement;
+         | whileStatement
+         | forStatement;
 
 whileStatement: 'while' expression 'do' 'begin' statement* 'end' ';';
+
+forStatement: 'for' IDENT ':=' expression 'to' expression 'do' 'begin' statement* 'end' ';';
 
 assignment: IDENT ':=' expression ';';
 
