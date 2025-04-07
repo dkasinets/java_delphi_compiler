@@ -6,6 +6,7 @@ import java.util.List;
 public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
     private final Map<String, Integer> fieldValues = new HashMap<>();
     private boolean shouldContinue = false;
+    private boolean shouldBreak = false;
 
     @Override
     public Void visitConstructorImplementation(delphiParser.ConstructorImplementationContext ctx) {
@@ -23,7 +24,7 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
 
     @Override
     public Void visitWritelnCall(delphiParser.WritelnCallContext ctx) {
-        if (shouldContinue) return null;
+        if (shouldContinue || shouldBreak) return null;
 
         String value = ctx.expression().getText();
         if (fieldValues.containsKey(value)) {
@@ -32,7 +33,7 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
             try {
                 System.out.println(Integer.parseInt(value));
             } catch (NumberFormatException e) {
-                System.out.println(fieldValues.getOrDefault(value, 0)); // Default to 0 if not found
+                System.out.println(fieldValues.getOrDefault(value, 0));
             }
         }
         return null;
@@ -40,14 +41,19 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
 
     @Override
     public Void visitStatement(delphiParser.StatementContext ctx) {
-        // Skip execution of any statements after continue
-        if (shouldContinue) return null;
+        if (shouldContinue || shouldBreak) return null;
         return visitChildren(ctx);
     }
 
     @Override
     public Void visitContinueStatement(delphiParser.ContinueStatementContext ctx) {
-        shouldContinue = true; // Mark continue so we skip remaining statements in the loop iteration
+        shouldContinue = true;
+        return null;
+    }
+
+    @Override
+    public Void visitBreakStatement(delphiParser.BreakStatementContext ctx) {
+        shouldBreak = true;
         return null;
     }
 
@@ -60,12 +66,16 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
         for (int i = from; i <= to; i++) {
             fieldValues.put(loopVar, i);
             shouldContinue = false;
+            shouldBreak = false;
 
             List<delphiParser.StatementContext> statements = ctx.statement();
             for (delphiParser.StatementContext stmt : statements) {
                 visit(stmt);
-                if (shouldContinue) break; // skip remaining statements in this iteration
+                if (shouldContinue) break; // skip rest of current iteration
+                if (shouldBreak) break;    // break from loop entirely
             }
+
+            if (shouldBreak) break;
         }
 
         return null;
@@ -83,7 +93,7 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
 
     @Override
     public Void visitAssignment(delphiParser.AssignmentContext ctx) {
-        if (shouldContinue) return null;
+        if (shouldContinue || shouldBreak) return null;
 
         String varName = ctx.IDENT().getText();
         String value = ctx.expression().getText();
