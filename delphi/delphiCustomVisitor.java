@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.List;
 
 public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
-    private final Map<String, Integer> fieldValues = new HashMap<>();
+    private final Map<String, Integer> globalValues = new HashMap<>();
     private final Map<String, delphiParser.FunctionImplementationContext> functionDefs = new HashMap<>();
     private boolean shouldContinue = false;
     private boolean shouldBreak = false;
@@ -24,12 +24,12 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
         String value = ctx.expression().getText();
 
         if (functionDefs.containsKey(value)) {
-            fieldValues.put(varName, executeFunction(value));
+            globalValues.put(varName, executeFunction(value));
         } else {
             try {
-                fieldValues.put(varName, Integer.parseInt(value));
+                globalValues.put(varName, Integer.parseInt(value));
             } catch (NumberFormatException e) {
-                fieldValues.put(varName, fieldValues.getOrDefault(value, 0));
+                globalValues.put(varName, globalValues.getOrDefault(value, 0));
             }
         }
 
@@ -40,21 +40,56 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
         delphiParser.FunctionImplementationContext functionCtx = functionDefs.get(functionName);
         if (functionCtx == null) return 0;
 
-        fieldValues.put("Result", 0);  // simulate the special Result variable
+        // Create a local scope
+        Map<String, Integer> localScope = new HashMap<>(globalValues);
+        localScope.put("Result", 0);
 
-        // Visit all local variable declarations
+        // Handle local variables
         if (functionCtx.variableDeclaration() != null) {
             for (delphiParser.VariableDeclarationContext varDecl : functionCtx.variableDeclaration()) {
-                visit(varDecl);
+                visitVariableDeclarationInScope(varDecl, localScope);
             }
         }
 
-        // Visit body statements
+        // Execute function body using local scope
         for (delphiParser.StatementContext stmt : functionCtx.statement()) {
-            visit(stmt);
+            visitStatementInScope(stmt, localScope);
         }
 
-        return fieldValues.getOrDefault("Result", 0);
+        return localScope.getOrDefault("Result", 0);
+    }
+
+    private void visitVariableDeclarationInScope(delphiParser.VariableDeclarationContext ctx, Map<String, Integer> scope) {
+        for (delphiParser.VarDeclContext decl : ctx.varDecl()) {
+            for (TerminalNode id : decl.IDENT()) {
+                scope.put(id.getText(), 0); // default initialization
+            }
+        }
+    }
+
+    private void visitStatementInScope(delphiParser.StatementContext ctx, Map<String, Integer> scope) {
+        if (ctx.assignment() != null) {
+            String var = ctx.assignment().IDENT().getText();
+            String val = ctx.assignment().expression().getText();
+            try {
+                scope.put(var, Integer.parseInt(val));
+            } catch (NumberFormatException e) {
+                scope.put(var, scope.getOrDefault(val, globalValues.getOrDefault(val, 0)));
+            }
+        } else if (ctx.writelnCall() != null) {
+            String expr = ctx.writelnCall().expression().getText();
+            if (scope.containsKey(expr)) {
+                System.out.println(scope.get(expr));
+            } else if (globalValues.containsKey(expr)) {
+                System.out.println(globalValues.get(expr));
+            } else {
+                try {
+                    System.out.println(Integer.parseInt(expr));
+                } catch (NumberFormatException e) {
+                    System.out.println(0);
+                }
+            }
+        }
     }
 
     @Override
@@ -62,13 +97,13 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
         if (shouldContinue || shouldBreak) return null;
 
         String value = ctx.expression().getText();
-        if (fieldValues.containsKey(value)) {
-            System.out.println(fieldValues.get(value));
+        if (globalValues.containsKey(value)) {
+            System.out.println(globalValues.get(value));
         } else {
             try {
                 System.out.println(Integer.parseInt(value));
             } catch (NumberFormatException e) {
-                System.out.println(fieldValues.getOrDefault(value, 0));
+                System.out.println(0);
             }
         }
         return null;
@@ -99,12 +134,11 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
         int to = getValue(ctx.expression(1));
 
         for (int i = from; i <= to; i++) {
-            fieldValues.put(loopVar, i);
+            globalValues.put(loopVar, i);
             shouldContinue = false;
             shouldBreak = false;
 
-            List<delphiParser.StatementContext> statements = ctx.statement();
-            for (delphiParser.StatementContext stmt : statements) {
+            for (delphiParser.StatementContext stmt : ctx.statement()) {
                 visit(stmt);
                 if (shouldContinue || shouldBreak) break;
             }
@@ -127,8 +161,8 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
 
     private int getValue(delphiParser.ExpressionContext ctx) {
         String text = ctx.getText();
-        if (fieldValues.containsKey(text)) {
-            return fieldValues.get(text);
+        if (globalValues.containsKey(text)) {
+            return globalValues.get(text);
         }
         try {
             return Integer.parseInt(text);

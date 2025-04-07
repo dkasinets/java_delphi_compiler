@@ -1,0 +1,99 @@
+program
+├── P'program'
+├── I'x'
+├── P'('
+├── I'x'
+├── P')'
+├── N';'
+├── topLevelDeclaration
+│   └── variableDeclaration
+│       ├── P'var'
+│       └── varDecl
+│           ├── I'globalValue'
+│           ├── S':'
+│           ├── type_
+│           │   └── P'Integer'
+│           └── N';'
+├── topLevelDeclaration
+│   └── functionImplementation
+│       ├── P'function'
+│       ├── I'GetValue'
+│       ├── S':'
+│       ├── type_
+│       │   └── P'Integer'
+│       ├── N';'
+│       ├── variableDeclaration
+│       │   ├── P'var'
+│       │   └── varDecl
+│       │       ├── I'localValue'
+│       │       ├── S':'
+│       │       ├── type_
+│       │       │   └── P'Integer'
+│       │       └── N';'
+│       ├── P'begin'
+│       ├── statement
+│       │   └── assignment
+│       │       ├── I'localValue'
+│       │       ├── P':='
+│       │       ├── expression
+│       │       │   └── C'700'
+│       │       └── N';'
+│       ├── statement
+│       │   └── writelnCall
+│       │       ├── I'WriteLn'
+│       │       ├── P'('
+│       │       ├── expression
+│       │       │   └── I'globalValue'
+│       │       ├── P')'
+│       │       └── N';'
+│       ├── statement
+│       │   └── writelnCall
+│       │       ├── I'WriteLn'
+│       │       ├── P'('
+│       │       ├── expression
+│       │       │   └── I'localValue'
+│       │       ├── P')'
+│       │       └── N';'
+│       ├── statement
+│       │   └── assignment
+│       │       ├── I'Result'
+│       │       ├── P':='
+│       │       ├── expression
+│       │       │   └── C'0'
+│       │       └── N';'
+│       ├── P'end'
+│       └── N';'
+├── topLevelDeclaration
+│   └── variableDeclaration
+│       ├── P'var'
+│       └── varDecl
+│           ├── I'result'
+│           ├── S':'
+│           ├── type_
+│           │   └── P'Integer'
+│           └── N';'
+├── P'begin'
+├── statement
+│   └── assignment
+│       ├── I'globalValue'
+│       ├── P':='
+│       ├── expression
+│       │   └── C'800'
+│       └── N';'
+├── statement
+│   └── assignment
+│       ├── I'result'
+│       ├── P':='
+│       ├── expression
+│       │   └── I'GetValue'
+│       └── N';'
+├── statement
+│   └── writelnCall
+│       ├── I'WriteLn'
+│       ├── P'('
+│       ├── expression
+│       │   └── I'result'
+│       ├── P')'
+│       └── N';'
+├── P'end'
+└── P'.'
