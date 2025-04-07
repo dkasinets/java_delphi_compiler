@@ -1,0 +1,75 @@
+program
+├── P'program'
+├── I'x'
+├── P'('
+├── I'x'
+├── P')'
+├── N';'
+├── topLevelDeclaration
+│   └── variableDeclaration
+│       ├── P'var'
+│       ├── varDecl
+│       │   ├── I'globalValue'
+│       │   ├── S':'
+│       │   ├── type_
+│       │   │   └── P'Integer'
+│       │   └── N';'
+│       ├── varDecl
+│       │   ├── I'localValue'
+│       │   ├── S':'
+│       │   ├── type_
+│       │   │   └── P'Integer'
+│       │   └── N';'
+│       └── varDecl
+│           ├── I'i'
+│           ├── S':'
+│           ├── type_
+│           │   └── P'Integer'
+│           └── N';'
+├── P'begin'
+├── statement
+│   └── assignment
+│       ├── I'globalValue'
+│       ├── P':='
+│       ├── expression
+│       │   └── C'5'
+│       └── N';'
+├── statement
+│   └── forStatement
+│       ├── P'for'
+│       ├── I'i'
+│       ├── P':='
+│       ├── expression
+│       │   └── C'1'
+│       ├── P'to'
+│       ├── expression
+│       │   └── I'globalValue'
+│       ├── P'do'
+│       ├── P'begin'
+│       ├── statement
+│       │   └── assignment
+│       │       ├── I'localValue'
+│       │       ├── P':='
+│       │       ├── expression
+│       │       │   └── I'i'
+│       │       └── N';'
+│       ├── statement
+│       │   └── writelnCall
+│       │       ├── I'WriteLn'
+│       │       ├── P'('
+│       │       ├── expression
+│       │       │   └── I'globalValue'
+│       │       ├── P')'
+│       │       └── N';'
+│       ├── statement
+│       │   └── writelnCall
+│       │       ├── I'WriteLn'
+│       │       ├── P'('
+│       │       ├── expression
+│       │       │   └── I'localValue'
+│       │       ├── P')'
+│       │       └── N';'
+│       ├── P'end'
+│       └── N';'
+├── P'end'
+└── P'.'

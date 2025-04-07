@@ -64,15 +64,15 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
         int to = getValue(ctx.expression(1));
 
         for (int i = from; i <= to; i++) {
-            fieldValues.put(loopVar, i);
+            fieldValues.put(loopVar, i); // update loop variable each time
             shouldContinue = false;
             shouldBreak = false;
 
             List<delphiParser.StatementContext> statements = ctx.statement();
             for (delphiParser.StatementContext stmt : statements) {
                 visit(stmt);
-                if (shouldContinue) break; // skip rest of current iteration
-                if (shouldBreak) break;    // break from loop entirely
+                if (shouldContinue) break;
+                if (shouldBreak) break;
             }
 
             if (shouldBreak) break;
