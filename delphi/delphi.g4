@@ -1,6 +1,12 @@
 grammar delphi;
 
-program: 'program' IDENT '(' IDENT ')' ';' classDeclaration* constructorImplementation* destructorImplementation* methodImplementation* variableDeclaration* 'begin' statement* 'end' '.';
+program: 'program' IDENT '(' IDENT ')' ';'
+         classDeclaration*
+         constructorImplementation*
+         destructorImplementation*
+         methodImplementation*
+         variableDeclaration*
+         'begin' statement* 'end' '.';
 
 classDeclaration: 'type' IDENT '=' 'class'
                   (visibilitySection)*
@@ -9,9 +15,9 @@ classDeclaration: 'type' IDENT '=' 'class'
 visibilitySection: ('public' | 'private') memberDeclaration*;
 
 memberDeclaration: constructorDeclaration
-                  | destructorDeclaration
-                  | methodDeclaration
-                  | fieldDeclaration;
+                 | destructorDeclaration
+                 | methodDeclaration
+                 | fieldDeclaration;
 
 constructorDeclaration: 'constructor' IDENT ';';
 
@@ -27,12 +33,13 @@ methodImplementation: 'procedure' IDENT '.' IDENT ';' 'begin' statement* 'end' '
 
 fieldDeclaration: IDENT ':' type_ ';';
 
-variableDeclaration: 'var' IDENT ':' type_ ';';
+variableDeclaration: 'var' varDecl+;
+
+varDecl: IDENT (',' IDENT)* ':' type_ ';';
 
 type_: 'Integer' | 'String' | 'Boolean' | IDENT;
 
-statement: variableAssignment
-         | assignment
+statement: assignment
          | methodCall
          | writelnCall
          | variableDeclaration
@@ -40,11 +47,9 @@ statement: variableAssignment
 
 whileStatement: 'while' expression 'do' 'begin' statement* 'end' ';';
 
-variableAssignment: IDENT ':=' expression ';';
-
 assignment: IDENT ':=' expression ';';
 
-methodCall: IDENT '.' IDENT ('(' expression? ')')? (';'|NEWLINE);
+methodCall: IDENT '.' IDENT ('(' expression? ')')? (';' | NEWLINE);
 
 writelnCall: 'WriteLn' '(' expression ')' ';';
 
