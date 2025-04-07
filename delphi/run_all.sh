@@ -7,6 +7,15 @@ FILES=(
     "destructor.pas"
     "encapsulation.pas"
     "method.pas"
+    "break.pas"
+    "continue.pas"
+    "for_scope.pas"
+    "for.pas"
+    "function_scope.pas"
+    "function.pas"
+    "method_scope.pas"
+    "while_scope.pas"
+    "while.pas"
 )
 
 # Compile the Delphi interpreter
