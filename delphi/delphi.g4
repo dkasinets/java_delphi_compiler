@@ -60,9 +60,11 @@ statement: assignment
          | variableDeclaration
          | whileStatement
          | forStatement
-         | breakStatement;
+         | breakStatement
+         | continueStatement; 
 
 breakStatement: 'break' ';';
+continueStatement: 'continue' ';'; 
 
 whileStatement: 'while' expression 'do' 'begin' statement* 'end' ';';
 
