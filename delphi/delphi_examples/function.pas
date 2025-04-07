@@ -2,7 +2,7 @@ program x (x);
 
 function GetValue: Integer;
 begin
-    Result := 42;
+    Result := 402;
 end;
 
 var
