@@ -1,4 +1,5 @@
 import org.antlr.v4.runtime.tree.*;
+import org.antlr.v4.runtime.tree.TerminalNode;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -6,6 +7,7 @@ import java.util.List;
 public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
     private final Map<String, Integer> globalValues = new HashMap<>();
     private final Map<String, delphiParser.FunctionImplementationContext> functionDefs = new HashMap<>();
+    private final Map<String, delphiParser.MethodImplementationContext> methodDefs = new HashMap<>();
     private boolean shouldContinue = false;
     private boolean shouldBreak = false;
 
@@ -17,42 +19,52 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
     }
 
     @Override
-    public Void visitAssignment(delphiParser.AssignmentContext ctx) {
-        if (shouldContinue || shouldBreak) return null;
-
-        String varName = ctx.IDENT().getText();
-        String value = ctx.expression().getText();
-
-        if (functionDefs.containsKey(value)) {
-            globalValues.put(varName, executeFunction(value));
-        } else {
-            try {
-                globalValues.put(varName, Integer.parseInt(value));
-            } catch (NumberFormatException e) {
-                globalValues.put(varName, globalValues.getOrDefault(value, 0));
-            }
-        }
-
+    public Void visitMethodImplementation(delphiParser.MethodImplementationContext ctx) {
+        String methodName = ctx.IDENT(1).getText(); // method name after the dot
+        methodDefs.put(methodName, ctx);
         return null;
     }
 
-    private int executeFunction(String functionName) {
-        delphiParser.FunctionImplementationContext functionCtx = functionDefs.get(functionName);
-        if (functionCtx == null) return 0;
+    @Override
+    public Void visitMethodCall(delphiParser.MethodCallContext ctx) {
+        String methodName = ctx.IDENT(1).getText();
+        if (methodDefs.containsKey(methodName)) {
+            executeMethod(methodName);
+        }
+        return null;
+    }
 
-        // Create a local scope
+    private void executeMethod(String methodName) {
+        delphiParser.MethodImplementationContext methodCtx = methodDefs.get(methodName);
+        if (methodCtx == null) return;
+
         Map<String, Integer> localScope = new HashMap<>(globalValues);
-        localScope.put("Result", 0);
 
-        // Handle local variables
-        if (functionCtx.variableDeclaration() != null) {
-            for (delphiParser.VariableDeclarationContext varDecl : functionCtx.variableDeclaration()) {
+        if (methodCtx.variableDeclaration() != null) {
+            for (delphiParser.VariableDeclarationContext varDecl : methodCtx.variableDeclaration()) {
                 visitVariableDeclarationInScope(varDecl, localScope);
             }
         }
 
-        // Execute function body using local scope
-        for (delphiParser.StatementContext stmt : functionCtx.statement()) {
+        for (delphiParser.StatementContext stmt : methodCtx.statement()) {
+            visitStatementInScope(stmt, localScope);
+        }
+    }
+
+    private int executeFunction(String functionName) {
+        delphiParser.FunctionImplementationContext funcCtx = functionDefs.get(functionName);
+        if (funcCtx == null) return 0;
+
+        Map<String, Integer> localScope = new HashMap<>(globalValues);
+        localScope.put("Result", 0);
+
+        if (funcCtx.variableDeclaration() != null) {
+            for (delphiParser.VariableDeclarationContext varDecl : funcCtx.variableDeclaration()) {
+                visitVariableDeclarationInScope(varDecl, localScope);
+            }
+        }
+
+        for (delphiParser.StatementContext stmt : funcCtx.statement()) {
             visitStatementInScope(stmt, localScope);
         }
 
@@ -62,7 +74,7 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
     private void visitVariableDeclarationInScope(delphiParser.VariableDeclarationContext ctx, Map<String, Integer> scope) {
         for (delphiParser.VarDeclContext decl : ctx.varDecl()) {
             for (TerminalNode id : decl.IDENT()) {
-                scope.put(id.getText(), 0); // default initialization
+                scope.put(id.getText(), 0);
             }
         }
     }
@@ -90,6 +102,27 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
                 }
             }
         }
+    }
+
+    @Override
+    public Void visitAssignment(delphiParser.AssignmentContext ctx) {
+        if (shouldContinue || shouldBreak) return null;
+
+        String varName = ctx.IDENT().getText();
+        String value = ctx.expression().getText();
+
+        if (functionDefs.containsKey(value)) {
+            globalValues.put(varName, executeFunction(value));
+            return null;
+        }
+
+        try {
+            globalValues.put(varName, Integer.parseInt(value));
+        } catch (NumberFormatException e) {
+            globalValues.put(varName, globalValues.getOrDefault(value, 0));
+        }
+
+        return null;
     }
 
     @Override
@@ -151,11 +184,6 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
 
     @Override
     public Void visitProgram(delphiParser.ProgramContext ctx) {
-        return visitChildren(ctx);
-    }
-
-    @Override
-    public Void visitConstructorDeclaration(delphiParser.ConstructorDeclarationContext ctx) {
         return visitChildren(ctx);
     }
 

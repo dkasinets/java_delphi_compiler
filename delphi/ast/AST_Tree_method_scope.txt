@@ -1,0 +1,107 @@
+program
+├── P'program'
+├── I'x'
+├── P'('
+├── I'x'
+├── P')'
+├── N';'
+├── topLevelDeclaration
+│   └── variableDeclaration
+│       ├── P'var'
+│       └── varDecl
+│           ├── I'globalValue'
+│           ├── S':'
+│           ├── type_
+│           │   └── P'Integer'
+│           └── N';'
+├── topLevelDeclaration
+│   └── classDeclaration
+│       ├── P'type'
+│       ├── I'ClassDeclaration'
+│       ├── P'='
+│       ├── P'class'
+│       ├── visibilitySection
+│       │   ├── P'public'
+│       │   └── memberDeclaration
+│       │       └── methodDeclaration
+│       │           ├── P'procedure'
+│       │           ├── I'Method'
+│       │           └── N';'
+│       ├── P'end'
+│       └── N';'
+├── topLevelDeclaration
+│   └── methodImplementation
+│       ├── P'procedure'
+│       ├── I'ClassDeclaration'
+│       ├── P'.'
+│       ├── I'Method'
+│       ├── N';'
+│       ├── variableDeclaration
+│       │   ├── P'var'
+│       │   └── varDecl
+│       │       ├── I'localValue'
+│       │       ├── S':'
+│       │       ├── type_
+│       │       │   └── P'Integer'
+│       │       └── N';'
+│       ├── P'begin'
+│       ├── statement
+│       │   └── assignment
+│       │       ├── I'localValue'
+│       │       ├── P':='
+│       │       ├── expression
+│       │       │   └── C'900'
+│       │       └── N';'
+│       ├── statement
+│       │   └── writelnCall
+│       │       ├── I'WriteLn'
+│       │       ├── P'('
+│       │       ├── expression
+│       │       │   └── I'globalValue'
+│       │       ├── P')'
+│       │       └── N';'
+│       ├── statement
+│       │   └── writelnCall
+│       │       ├── I'WriteLn'
+│       │       ├── P'('
+│       │       ├── expression
+│       │       │   └── I'localValue'
+│       │       ├── P')'
+│       │       └── N';'
+│       ├── P'end'
+│       └── N';'
+├── topLevelDeclaration
+│   └── variableDeclaration
+│       ├── P'var'
+│       └── varDecl
+│           ├── I'classInit'
+│           ├── S':'
+│           ├── type_
+│           │   └── I'ClassDeclaration'
+│           └── N';'
+├── P'begin'
+├── statement
+│   └── assignment
+│       ├── I'globalValue'
+│       ├── P':='
+│       ├── expression
+│       │   └── C'1000'
+│       └── N';'
+├── statement
+│   └── assignment
+│       ├── I'classInit'
+│       ├── P':='
+│       ├── expression
+│       │   └── objectCreation
+│       │       ├── I'ClassDeclaration'
+│       │       ├── P'.'
+│       │       └── I'Create'
+│       └── N';'
+├── statement
+│   └── methodCall
+│       ├── I'classInit'
+│       ├── P'.'
+│       ├── I'Method'
+│       └── N';'
+├── P'end'
+└── P'.'
