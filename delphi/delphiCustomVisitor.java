@@ -20,7 +20,7 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
 
     @Override
     public Void visitMethodImplementation(delphiParser.MethodImplementationContext ctx) {
-        String methodName = ctx.IDENT(1).getText(); // method name after the dot
+        String methodName = ctx.IDENT(1).getText();
         methodDefs.put(methodName, ctx);
         return null;
     }
@@ -146,6 +146,30 @@ public class delphiCustomVisitor extends delphiBaseVisitor<Void> {
     public Void visitStatement(delphiParser.StatementContext ctx) {
         if (shouldContinue || shouldBreak) return null;
         return visitChildren(ctx);
+    }
+
+    @Override
+    public Void visitWhileStatement(delphiParser.WhileStatementContext ctx) {
+        while (evaluateCondition(ctx.expression())) {
+            shouldContinue = false;
+            shouldBreak = false;
+
+            for (delphiParser.StatementContext stmt : ctx.statement()) {
+                visit(stmt);
+                if (shouldBreak || shouldContinue) break;
+            }
+
+            if (shouldBreak) break;
+        }
+        return null;
+    }
+
+    private boolean evaluateCondition(delphiParser.ExpressionContext ctx) {
+        if (ctx instanceof delphiParser.EqualityExpressionContext) {
+            delphiParser.EqualityExpressionContext eqCtx = (delphiParser.EqualityExpressionContext) ctx;
+            return getValue(eqCtx.expression(0)) == getValue(eqCtx.expression(1));
+        }
+        return false;
     }
 
     @Override

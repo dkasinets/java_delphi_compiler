@@ -1,0 +1,54 @@
+program
+├── P'program'
+├── I'x'
+├── P'('
+├── I'x'
+├── P')'
+├── N';'
+├── topLevelDeclaration
+│   └── variableDeclaration
+│       ├── P'var'
+│       └── varDecl
+│           ├── I'number'
+│           ├── S':'
+│           ├── type_
+│           │   └── P'Integer'
+│           └── N';'
+├── P'begin'
+├── statement
+│   └── assignment
+│       ├── I'number'
+│       ├── P':='
+│       ├── expression
+│       │   └── C'0'
+│       └── N';'
+├── statement
+│   └── whileStatement
+│       ├── P'while'
+│       ├── expression
+│       │   ├── expression
+│       │   │   └── I'number'
+│       │   ├── P'='
+│       │   └── expression
+│       │       └── C'0'
+│       ├── P'do'
+│       ├── P'begin'
+│       ├── statement
+│       │   └── writelnCall
+│       │       ├── I'WriteLn'
+│       │       ├── P'('
+│       │       ├── expression
+│       │       │   └── C'101'
+│       │       ├── P')'
+│       │       └── N';'
+│       ├── statement
+│       │   └── assignment
+│       │       ├── I'number'
+│       │       ├── P':='
+│       │       ├── expression
+│       │       │   └── C'1'
+│       │       └── N';'
+│       ├── P'end'
+│       └── N';'
+├── P'end'
+└── P'.'
