@@ -1,12 +1,16 @@
 grammar delphi;
 
 program: 'program' IDENT '(' IDENT ')' ';'
-         classDeclaration*
-         constructorImplementation*
-         destructorImplementation*
-         methodImplementation*
-         variableDeclaration*
+         topLevelDeclaration*
          'begin' statement* 'end' '.';
+
+topLevelDeclaration:
+      classDeclaration
+    | constructorImplementation
+    | destructorImplementation
+    | methodImplementation
+    | variableDeclaration
+    ;
 
 classDeclaration: 'type' IDENT '=' 'class'
                   (visibilitySection)*
@@ -23,13 +27,19 @@ constructorDeclaration: 'constructor' IDENT ';';
 
 destructorDeclaration: 'destructor' IDENT ';';
 
-constructorImplementation: 'constructor' IDENT '.' IDENT ';' 'begin' statement* 'end' ';';
+constructorImplementation: 'constructor' IDENT '.' IDENT ';'
+                           variableDeclaration*
+                           'begin' statement* 'end' ';';
 
-destructorImplementation: 'destructor' IDENT '.' IDENT ';' 'begin' statement* 'end' ';';
+destructorImplementation: 'destructor' IDENT '.' IDENT ';'
+                           variableDeclaration*
+                           'begin' statement* 'end' ';';
 
 methodDeclaration: 'procedure' IDENT ';';
 
-methodImplementation: 'procedure' IDENT '.' IDENT ';' 'begin' statement* 'end' ';';
+methodImplementation: 'procedure' IDENT '.' IDENT ';'
+                       variableDeclaration*
+                       'begin' statement* 'end' ';';
 
 fieldDeclaration: IDENT ':' type_ ';';
 
