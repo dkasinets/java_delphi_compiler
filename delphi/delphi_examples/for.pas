@@ -7,6 +7,6 @@ begin
     number := 5; 
     for i := 1 to number do
     begin
-        WriteLn(0);
+        WriteLn(600);
     end;
 end.
