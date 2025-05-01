@@ -1,0 +1,69 @@
+The final project extends Project 1 & 2.
+I'm only required to implement 70% of language features of my own choosing (or 10/13 test cases). 
+
+Instead of DIRECTLY evaluating/interpreting the Pascal/Delphi code 
+using Abstract Syntax Tree (AST) or parse tree visitor,
+I will now build a compiler. 
+
+The compiler will TRANSLATE the Pascal/ Delphi subset defined in Project 2 
+into LLVM Intermediate Representation (IR).
+
+Building on previous projects: 
+- The final project directly UTILIZES the Parser and the Symbolic Representation (AST) from Project 2.
+- I should re-use existing front-end code (lexer, parser, AST builder/visitor setup). 
+- The core new task is to REPLACE the evaluation/interpretation logic 
+with CODE GENERATION logic targeting LLVM IR. 
+
+Key Task:
+LLVM IR Generation (AST/Tree Traversal)
+- MODIFY the AST traversal logic (e.g., my visitor or tree walker)
+- Instead of performing calculations or executing control flow directly, 
+my traversal should now GENERATE corresponding LLVM IR instructions as text. 
+- The code generator should output a standard LLVM IR file (e.g., output.ll).
+
+Useful resources:
+- https://godbolt.org/
+- On the right side, set the compiler to x86-64 clang 20.1.0
+- On the right side, set the the option to -emit-llvm
+- Write C++ program on the left panel
+- I will see the corresponding generated LLVM on the right 
+- Advise from instructor: 
+    - Use it to "learn" what LLVM code can produce various programming constructs
+    - In order to be able to correctly generate LLVM code for Pascal/ Delphi.
+
+What to Turn In (.zip):
+- All source files needed to build and run the compiler.
+- Example Pascal/ Delphi test case files.
+- For each test case, provide the generated LLVM IR (.ll) file.
+- A video demonstration of the work. 
+    - Linked (to Dropbox) in the comments of my submission 
+    - A narrated walkthrough of my work and execution of the test files. 
+- An updated README file detailing: 
+    - Indicating 9/13 (or 70%) of test cases from Project 2
+    - How to build my compiler 
+    - How to use my compiler to generate LLVM IR
+
+
+
+Extra Credit:
+Then, for Extra Credit (EC) I can use the LLVM toolchain to 
+compile the LLVM Intermediate Representation (IR) into WebAssembly (WASM), 
+allowing the Pascal/ Delphi programs to run within a web browser.
+
+LLVM IR to WASM Compilation:
+- Use LLVM tools to compile the .ll file into a WebAssembly module (.wasm) using llc. 
+- Browser Runtime Environment:
+    - Create a simple HTML file (.html) and associated JavaScript (.js) file.
+    - The JavaScript code needs to:
+        - Load and Instantiate: Fetch and instantiate the compiled .wasm module 
+        - Execute: Call an exported function from my WASM module 
+
+EC:
+What to Turn In:
+- The HTML and JavaScript files necessary to run the compiled WASM output in a browser.
+- An updated README file detailing: 
+    - How to build my compiler 
+    - How to use my compiler to generate LLVM IR
+    - How to compile from .ll to .wasm 
+    - How to run the resulting WASM code using the provided HTML/JS files. 
+- A video demonstration of the browser execution, linked in the comments. 
