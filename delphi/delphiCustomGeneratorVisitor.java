@@ -1,4 +1,3 @@
-// delphiCustomGeneratorVisitor.java
 import java.util.*;
 import org.antlr.v4.runtime.tree.*;
 
@@ -7,6 +6,7 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
     private int tempVarCount = 0;
     private boolean justDidContinue = false;
     private boolean justDidBreak = false;
+    private boolean needsIV = false;
 
     private String nextTemp() {
         return "%t" + (tempVarCount++);
@@ -17,8 +17,11 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
         builder.append("declare void @print_i32(i32) #0\n\n");
         builder.append("define void @run() {\nentry:\n");
         builder.append("  %number = alloca i32\n");
-        builder.append("  %i = alloca i32\n");
+        needsIV = false;
         visitChildren(ctx);
+        if (needsIV) {
+            builder.insert(builder.indexOf("  %number"), "  %i = alloca i32\n");
+        }
         return finish();
     }
 
@@ -39,6 +42,7 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
 
     @Override
     public String visitForStatement(delphiParser.ForStatementContext ctx) {
+        needsIV = true;
         String loopVar = ctx.IDENT().getText();
         String from = ctx.expression(0).getText();
 
@@ -59,6 +63,27 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
         if (!justDidContinue && !justDidBreak) {
             builder.append("  %next = add i32 %iv, 1\n");
             builder.append("  store i32 %next, ptr %" + loopVar + "\n");
+            builder.append("  br label %loop\n");
+        }
+
+        return null;
+    }
+
+    @Override
+    public String visitWhileStatement(delphiParser.WhileStatementContext ctx) {
+        builder.append("  br label %loop\n\n");
+
+        builder.append("loop:\n");
+        builder.append("  %val = load i32, ptr %number\n");
+        builder.append("  %cond = icmp eq i32 %val, 0\n");
+        builder.append("  br i1 %cond, label %body, label %exit\n\n");
+
+        builder.append("body:\n");
+        justDidContinue = false;
+        justDidBreak = false;
+        visitChildren(ctx);
+
+        if (!justDidBreak) {
             builder.append("  br label %loop\n");
         }
 
@@ -95,6 +120,7 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
             if (child instanceof delphiParser.StatementContext ||
                 child instanceof delphiParser.AssignmentContext ||
                 child instanceof delphiParser.ForStatementContext ||
+                child instanceof delphiParser.WhileStatementContext ||
                 child instanceof delphiParser.WritelnCallContext ||
                 child instanceof delphiParser.BreakStatementContext ||
                 child instanceof delphiParser.ContinueStatementContext) {
