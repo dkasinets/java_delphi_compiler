@@ -5,6 +5,8 @@ import org.antlr.v4.runtime.tree.*;
 public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
     private StringBuilder builder = new StringBuilder();
     private int tempVarCount = 0;
+    private boolean justDidContinue = false;
+    private boolean justDidBreak = false;
 
     private String nextTemp() {
         return "%t" + (tempVarCount++);
@@ -39,7 +41,6 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
     public String visitForStatement(delphiParser.ForStatementContext ctx) {
         String loopVar = ctx.IDENT().getText();
         String from = ctx.expression(0).getText();
-        String to = ctx.expression(1).getText();
 
         builder.append("  store i32 " + from + ", ptr %" + loopVar + "\n");
         builder.append("  br label %loop\n\n");
@@ -51,7 +52,16 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
         builder.append("  br i1 %cond, label %body, label %exit\n\n");
 
         builder.append("body:\n");
+        justDidContinue = false;
+        justDidBreak = false;
         visitChildren(ctx);
+
+        if (!justDidContinue && !justDidBreak) {
+            builder.append("  %next = add i32 %iv, 1\n");
+            builder.append("  store i32 %next, ptr %" + loopVar + "\n");
+            builder.append("  br label %loop\n");
+        }
+
         return null;
     }
 
@@ -65,6 +75,16 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
     @Override
     public String visitBreakStatement(delphiParser.BreakStatementContext ctx) {
         builder.append("  br label %exit ; break after one iteration\n");
+        justDidBreak = true;
+        return null;
+    }
+
+    @Override
+    public String visitContinueStatement(delphiParser.ContinueStatementContext ctx) {
+        builder.append("  %next = add i32 %iv, 1\n");
+        builder.append("  store i32 %next, ptr %i\n");
+        builder.append("  br label %loop ; continue to next iteration\n");
+        justDidContinue = true;
         return null;
     }
 
@@ -76,7 +96,8 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
                 child instanceof delphiParser.AssignmentContext ||
                 child instanceof delphiParser.ForStatementContext ||
                 child instanceof delphiParser.WritelnCallContext ||
-                child instanceof delphiParser.BreakStatementContext) {
+                child instanceof delphiParser.BreakStatementContext ||
+                child instanceof delphiParser.ContinueStatementContext) {
                 visit(child);
             }
         }
