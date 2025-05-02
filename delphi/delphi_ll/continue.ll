@@ -19,7 +19,6 @@ body:
   %next = add i32 %iv, 1
   store i32 %next, ptr %i
   br label %loop ; continue to next iteration
-
 exit:
   ret void
 }

@@ -17,9 +17,9 @@ loop:
 body:
   call void @print_i32(i32 100)
   br label %exit ; break after one iteration
-
 exit:
   ret void
 }
 
 attributes #0 = { "wasm-import-module"="env" "wasm-import-name"="print_i32" }
+

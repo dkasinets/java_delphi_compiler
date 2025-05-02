@@ -15,7 +15,6 @@ body:
   call void @print_i32(i32 101)
   store i32 1, ptr %number
   br label %loop
-
 exit:
   ret void
 }
