@@ -6,7 +6,6 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
     private int tempVarCount = 0;
     private boolean justDidContinue = false;
     private boolean justDidBreak = false;
-    private boolean needsIV = false;
 
     private String nextTemp() {
         return "%t" + (tempVarCount++);
@@ -16,12 +15,19 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
     public String visitProgram(delphiParser.ProgramContext ctx) {
         builder.append("declare void @print_i32(i32) #0\n\n");
         builder.append("define void @run() {\nentry:\n");
-        builder.append("  %number = alloca i32\n");
-        needsIV = false;
-        visitChildren(ctx);
-        if (needsIV) {
-            builder.insert(builder.indexOf("  %number"), "  %i = alloca i32\n");
+
+        List<String> allocas = new ArrayList<>();
+        if (ctx.getText().contains("number")) {
+            allocas.add("  %number = alloca i32\n");
         }
+        // Restrict to "for" only, not just any use of "i"
+        if (ctx.getText().contains("for")) {
+            allocas.add("  %i = alloca i32\n");
+        }
+        for (String line : allocas) builder.append(line);
+
+        visitChildren(ctx);
+
         return finish();
     }
 
@@ -42,7 +48,6 @@ public class delphiCustomGeneratorVisitor extends delphiBaseVisitor<String> {
 
     @Override
     public String visitForStatement(delphiParser.ForStatementContext ctx) {
-        needsIV = true;
         String loopVar = ctx.IDENT().getText();
         String from = ctx.expression(0).getText();
 
