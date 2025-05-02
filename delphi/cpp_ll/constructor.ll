@@ -1,0 +1,18 @@
+%ClassDeclaration = type { i8 }
+
+declare void @print_i32(i32) #1
+
+define void @run() {
+entry:
+  %obj = alloca %ClassDeclaration
+  call void @ClassDeclaration_Create(ptr %obj)
+  ret void
+}
+
+define void @ClassDeclaration_Create(ptr %this) {
+entry:
+  call void @print_i32(i32 12)
+  ret void
+}
+
+attributes #1 = { "wasm-import-module"="env" "wasm-import-name"="print_i32" }
