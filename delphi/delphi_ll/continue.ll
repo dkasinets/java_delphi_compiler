@@ -18,7 +18,7 @@ body:
   call void @print_i32(i32 400)
   %next = add i32 %iv, 1
   store i32 %next, ptr %i
-  br label %loop ; continue to next iteration
+  br label %loop
 exit:
   ret void
 }
