@@ -62,7 +62,7 @@ public class PrintableTree {
 
             // Write to the file
             Files.write(filePath, output.getBytes());
-            System.out.println("AST tree saved to " + filePath.toAbsolutePath());
+            System.out.println("    AST tree saved to " + filePath.toAbsolutePath());
         } catch (IOException e) {
             System.err.println("Error writing AST tree to file: " + e.getMessage());
         }

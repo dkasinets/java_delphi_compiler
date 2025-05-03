@@ -5,7 +5,6 @@ define void @run() {
 entry:
   %classInit = alloca %ClassDeclaration
   call void @ClassDeclaration_Method(ptr %classInit)
-exit:
   ret void
 }
 
